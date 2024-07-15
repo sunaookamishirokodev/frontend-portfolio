@@ -15,7 +15,7 @@ export default function RootTemplate({
 				attribute="data-theme"
 				storageKey="theme"
 				themes={["black", "light"]}
-				defaultTheme="system"
+				defaultTheme="black"
 				enableSystem
 			>
 				<Header />
