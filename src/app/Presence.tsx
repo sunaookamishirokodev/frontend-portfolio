@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function Presence({ presence }: { presence: Presence | null }) {
 	return (
-		<div className="flex gap-5 rounded-md bg-colors-secondary-200 p-4 dark:bg-colors-primary-200">
+		<div className="-mx-4 flex gap-5 rounded-md bg-colors-secondary-200 p-4 md:mx-0 dark:bg-colors-primary-200">
 			{presence ? (
 				<>
 					<div className="relative w-1/3 md:w-[calc(100%/6.65)]">
