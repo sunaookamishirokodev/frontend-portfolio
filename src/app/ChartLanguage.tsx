@@ -1,10 +1,13 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
 
 const RadialBar = dynamic(() => import("@ant-design/plots").then((mod) => mod.RadialBar), { ssr: false });
 
 export default function ChartLanguage({ data }: { data: GithubStats | null }) {
+	const { theme } = useTheme();
+
 	if (!data) {
 		return (
 			<div
@@ -46,7 +49,7 @@ export default function ChartLanguage({ data }: { data: GithubStats | null }) {
 				data={result}
 				xField="language"
 				yField="score"
-				theme="classicDark"
+				theme={theme === "black" ? "classicDark" : "classic"}
 				group={true}
 				colorField="type"
 			/>
