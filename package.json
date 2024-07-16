@@ -1,11 +1,12 @@
 {
 	"name": "frontend",
 	"version": "0.1.0",
-	"private": true,
+	"private": false,
+	"license": "MIT",
 	"scripts": {
-		"dev": "next dev",
+		"dev": "next dev -p 2222",
 		"build": "next build",
-		"start": "next start",
+		"start": "next start -p 2222",
 		"lint": "next lint",
 		"format": "prettier --write .",
 		"prepare": "husky"

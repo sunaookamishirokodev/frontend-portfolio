@@ -11,9 +11,8 @@ export default function Repository({ owner = "sunaookamishirokodev", repoName }:
 
 	useEffect(() => {
 		axios
-			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/v1/github/repository/${owner}/${repoName}`)
+			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/repository/${owner}/${repoName}`)
 			.then((res) => setData(res.data))
-			.catch(console.error);
 	}, [owner, repoName]);
 
 	if (!data) {

@@ -6,7 +6,8 @@ const { NEXT_PUBLIC_FACEBOOK_URL, NEXT_PUBLIC_BASE_URL } = process.env;
 export const metadata: Metadata = {
 	metadataBase: new URL(NEXT_PUBLIC_BASE_URL!),
 	title: "Shiroko's Profile",
-	description: "Hey guys! Welcome to my website:3",
+	description:
+		"Hello everyone, I'm Shiroko - a normal student who likes to code, watch anime, play games and communicate with people. So you can hire me to code your website, portfolio, economy, advertising website but not 18+ or illegal. Furthermore, I am the administrator of Elaina Team - a new technology team in Vietnam and I am really happy if I can be of any help to you. Thanks for reading, have a great day!",
 	applicationName: "Personal Portfolio",
 	authors: {
 		url: NEXT_PUBLIC_FACEBOOK_URL,
