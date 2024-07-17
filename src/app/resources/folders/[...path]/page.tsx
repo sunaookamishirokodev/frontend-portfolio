@@ -51,11 +51,11 @@ export default function ResourcesFoldersPage({ params: { path } }: { params: { p
 							return (
 								<li
 									key={index}
-									className="text-black/80 transition-all hover:text-black dark:text-white/80 hover:dark:text-white"
+									className="grid grid-cols-12 text-black/80 transition-all hover:text-black dark:text-white/80 hover:dark:text-white"
 								>
 									<Link
 										href={`/resources/${type === "folder" ? "folders" : "files"}/${path.join("/")}/${name}`}
-										className="grid grid-cols-12"
+										className="col-span-11 grid grid-cols-11"
 									>
 										<span className="my-1 flex items-center">
 											<Icon />
@@ -65,18 +65,19 @@ export default function ResourcesFoldersPage({ params: { path } }: { params: { p
 											{formatDistanceToNow(lastModifiedDateTime)}
 										</span>
 										<span className="my-1">{size}</span>
-										<ul className="my-1 flex items-center gap-0.5">
-											<li>
-												{downloadUrl ? (
-													<Link className="hover:scale-110" href={downloadUrl} download>
-														<FaCloudDownloadAlt />
-													</Link>
-												) : (
-													<></>
-												)}
-											</li>
-										</ul>
 									</Link>
+
+									<ul className="my-1 flex items-center gap-0.5">
+										<li>
+											{downloadUrl ? (
+												<Link className="hover:scale-110" href={downloadUrl} download>
+													<FaCloudDownloadAlt />
+												</Link>
+											) : (
+												<></>
+											)}
+										</li>
+									</ul>
 								</li>
 							);
 						})}

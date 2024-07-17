@@ -2,7 +2,7 @@
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { JetBrains_Mono } from "next/font/google";
 import Header from "./Header";
-const mainFont = JetBrains_Mono({ subsets: ["latin"], preload: true });
+const mainFont = JetBrains_Mono({ subsets: ["latin"] });
 
 export default function RootTemplate({
 	children,

@@ -17,6 +17,7 @@
 		"date-fns": "^3.6.0",
 		"gsap": "^3.12.5",
 		"luxon": "^3.4.4",
+		"mime-types": "^2.1.35",
 		"next": "^14.2.5",
 		"next-themes": "^0.3.0",
 		"prettier": "^3.3.2",
@@ -30,6 +31,7 @@
 	"devDependencies": {
 		"@commitlint/config-conventional": "^19.2.2",
 		"@types/luxon": "^3.4.2",
+		"@types/mime-types": "^2.1.4",
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
