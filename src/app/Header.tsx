@@ -28,7 +28,7 @@ export default function Header() {
 					width={0}
 					height={0}
 					sizes="100vw"
-					className="h-2/5 w-auto rounded-full md:h-1/3"
+					className="h-2/5 w-auto rounded-full md:h-2/3"
 				/>
 				<div>
 					<span>ko</span>
