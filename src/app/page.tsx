@@ -14,9 +14,7 @@ export default function RootPage() {
 	const [userStats, setUserStats] = useState<null | GithubStats>(null);
 
 	useEffect(() => {
-		axios
-			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/stats`)
-			.then((res) => setUserStats(res.data))
+		axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/stats`).then((res) => setUserStats(res.data));
 	}, []);
 
 	useEffect(() => {

@@ -39,7 +39,7 @@ export default function Introduction({ presence }: { presence: Presence | null }
 					<span className="text-orange-500">)</span>
 					<div className="absolute left-0 top-1/3 w-full bg-white text-sm md:text-2xl xl:text-4xl dark:bg-black">
 						<div className="py-2 text-center md:text-start">
-							<span>I&apos;m</span> <span className="text-blue-500">Shiroko</span> -{" "}
+							<span>I&apos;m</span> <span className="text-blue-500">Shiroko</span> - a{" "}
 							<TypeIt
 								className="text-highlight"
 								as="span"

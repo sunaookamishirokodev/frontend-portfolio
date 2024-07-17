@@ -1,5 +1,4 @@
 "use client";
-
 import { typeFile } from "@/app/constants";
 import axios from "axios";
 import { formatDistanceToNow } from "date-fns";
@@ -7,14 +6,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 
-export default function ResourcesPage() {
+export default function ResourcesFoldersPage({ params: { path } }: { params: { path: string[] } }) {
 	const [data, setData] = useState<OneDriveSharing[] | null>(null);
 
 	useEffect(() => {
 		axios
-			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/microsoft/resources/folders/ `)
+			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/microsoft/resources/folders/${path.join("/")}`)
 			.then((res) => setData(res.data));
-	}, []);
+	}, [path]);
 
 	return (
 		<div className="widget flex flex-col">
@@ -39,7 +38,15 @@ export default function ResourcesPage() {
 							);
 						})
 					: data.map(({ id, lastModifiedDateTime, name, parentId, size, type, downloadUrl }, index) => {
-							const Icon = typeFile[type];
+							let Icon;
+							if (
+								type === "file" &&
+								["zip", "rar"].includes(name.split(".")[name.split(".").length - 1])
+							) {
+								Icon = typeFile.archive;
+							} else {
+								Icon = typeFile[type];
+							}
 
 							return (
 								<li
@@ -47,7 +54,7 @@ export default function ResourcesPage() {
 									className="text-black/80 transition-all hover:text-black dark:text-white/80 hover:dark:text-white"
 								>
 									<Link
-										href={`/resources/${type === "folder" ? "folders" : "files"}/${name}`}
+										href={`/resources/${type === "folder" ? "folders" : "files"}/${path.join("/")}/${name}`}
 										className="grid grid-cols-12"
 									>
 										<span className="my-1 flex items-center">

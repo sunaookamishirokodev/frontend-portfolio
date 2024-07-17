@@ -5,4 +5,5 @@ interface OneDriveSharing {
 	lastModifiedDateTime: string;
 	size: string;
 	type: "file" | "folder";
+	downloadUrl: string | null;
 }
