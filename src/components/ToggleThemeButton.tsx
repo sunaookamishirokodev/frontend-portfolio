@@ -6,9 +6,11 @@ export function ToggleThemeButton() {
 	const { setTheme, theme } = useTheme();
 
 	return (
-		<label className="swap swap-rotate">
+		<label className="swap swap-rotate" htmlFor="toggle-theme">
 			{/* this hidden checkbox controls the state */}
 			<input
+				aria-label="toggle-theme"
+				name="toggle-theme"
 				tabIndex={-1}
 				type="checkbox"
 				className="theme-controller"

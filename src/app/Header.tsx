@@ -58,7 +58,7 @@ export default function Header() {
 					rel="noopener noreferrer"
 					tabIndex={-1}
 				>
-					<FaGithub className="size-6 md:size-8" />
+					<FaGithub aria-label="Repository of this website" className="size-6 md:size-8" />
 				</Link>
 				<HiOutlineSearch className="size-6 md:hidden" />
 				<ToggleThemeButton />
