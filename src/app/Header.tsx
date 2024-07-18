@@ -13,7 +13,7 @@ export default function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
 	return (
-		<section className="fixed z-[99999] flex h-20 w-full justify-between bg-white p-4 dark:bg-black">
+		<section className="fixed z-50 flex h-20 w-full justify-between bg-white p-4 dark:bg-black">
 			<Link href={"/"} tabIndex={-1} className="flex items-center">
 				<div>
 					<span className="mr-1">&lt;</span>

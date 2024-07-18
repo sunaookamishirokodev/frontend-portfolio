@@ -12,17 +12,32 @@ export default function ResourcesPage() {
 		axios
 			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/microsoft/resources/folders/`)
 			.then((res) => setData(res.data.data))
-			.catch((error) => toast.error(error.response.data.msg));
+			.catch((error) => {
+				toast.error(error.response.data.msg, {
+					toastId: "error",
+				});
+				setTimeout(() => history.back(), 5000);
+			});
 	}, []);
 
 	return (
 		<div className="widget flex flex-col">
-			<div className="grid grid-cols-12 border-b">
-				<span className="mb-2">Type</span>
-				<span className="col-span-7 mb-2">Name</span>
-				<span className="col-span-2 mb-2">Last modified</span>
-				<span className="mb-2">Size</span>
-				<span className="mb-2">Actions</span>
+			<div className="grid grid-cols-5 border-b text-xs md:grid-cols-10 md:text-base xl:grid-cols-12">
+				<span title="Type" className="mb-2 hidden md:inline-block">
+					Type
+				</span>
+				<span title="Name" className="col-span-2 mb-2 md:col-span-4 xl:col-span-7">
+					Name
+				</span>
+				<span title="Last modified" className="mb-2 mr-2 truncate md:col-span-2 md:mr-0">
+					Last modified
+				</span>
+				<span title="Size" className="mb-2 ml-2 md:col-span-2 xl:col-span-1 xl:ml-0">
+					Size
+				</span>
+				<span title="Actions" className="mb-2">
+					Actions
+				</span>
 			</div>
 			<ul>
 				<DisplayResources data={data} />

@@ -14,7 +14,11 @@ export default function Repository({ owner = "sunaookamishirokodev", repoName }:
 		axios
 			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/repository/${owner}/${repoName}`)
 			.then((res) => setData(res.data.data))
-			.catch((error) => toast.error(error.response.data.msg));
+			.catch((error) =>
+				toast.error(error.response.data.msg, {
+					toastId: "error",
+				}),
+			);
 	}, [owner, repoName]);
 
 	if (!data) {

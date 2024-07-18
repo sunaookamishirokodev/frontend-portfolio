@@ -1,8 +1,8 @@
 "use client";
 import ErrorPreviewer from "@/components/ErrorPreviewer";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import mime from "mime-types";
+import { useEffect, useState } from "react";
 
 export default function ResourcesFilesPage({ params: { path } }: { params: { path: string[] } }) {
 	const [data, setData] = useState<any>(null);
@@ -11,10 +11,7 @@ export default function ResourcesFilesPage({ params: { path } }: { params: { pat
 		axios
 			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/microsoft/resources/files/${path.join("/")}`)
 			.then((res) => setData(res.data.data.path))
-			.catch((error) => {
-				console.log(error.response.data);
-				setData(error.response.data);
-			});
+			.catch((error) => setData(error.response.data));
 	}, [path]);
 
 	if (!data) {

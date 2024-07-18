@@ -1,10 +1,10 @@
 "use client";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { useTheme } from "next-themes";
 import { JetBrains_Mono } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
-import { useTheme } from "next-themes";
 const mainFont = JetBrains_Mono({ subsets: ["latin"] });
 export default function RootTemplate({
 	children,
@@ -28,12 +28,16 @@ export default function RootTemplate({
 				</div>
 			</ThemeProvider>
 			<ToastContainer
+				position="top-right"
 				autoClose={5000}
-				closeButton={true}
-				newestOnTop={true}
-				pauseOnHover={true}
-				theme={theme === "light" ? "light" : "dark"}
-				draggable={true}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme={theme === "black" ? "light" : "dark"}
 			/>
 		</body>
 	);
