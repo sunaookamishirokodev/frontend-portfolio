@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	crossOrigin: "anonymous",
+	output: "standalone",
 	async redirects() {
 		return [
 			{

@@ -8,13 +8,17 @@ import Clock from "./Clock";
 import GithubStats from "./GithubStats";
 import Introduction from "./Introduction";
 import SocialPlatform from "./SocialFlatform";
+import { toast } from "react-toastify";
 
 export default function RootPage() {
 	const [presence, setPresence] = useState<null | Presence>(null);
 	const [userStats, setUserStats] = useState<null | GithubStats>(null);
 
 	useEffect(() => {
-		axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/stats`).then((res) => setUserStats(res.data));
+		axios
+			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/stats`)
+			.then((res) => setUserStats(res.data.data))
+			.catch((error) => toast.error(error.response.data.msg));
 	}, []);
 
 	useEffect(() => {

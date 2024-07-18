@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { FaCodeFork, FaEye } from "react-icons/fa6";
+import { toast } from "react-toastify";
 
 export default function Repository({ owner = "sunaookamishirokodev", repoName }: { owner?: string; repoName: string }) {
 	const [data, setData] = useState<null | GithubRepository>(null);
@@ -12,7 +13,8 @@ export default function Repository({ owner = "sunaookamishirokodev", repoName }:
 	useEffect(() => {
 		axios
 			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/repository/${owner}/${repoName}`)
-			.then((res) => setData(res.data));
+			.then((res) => setData(res.data.data))
+			.catch((error) => toast.error(error.response.data.msg));
 	}, [owner, repoName]);
 
 	if (!data) {

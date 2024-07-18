@@ -67,7 +67,7 @@ export default function Clock() {
 				</div>
 			</div>
 			<ul className="col-span-2 flex flex-col justify-center gap-2">
-				<li className="sm:text-3xl md:text-4xl lg:text-5xl xl:text-2xl 2xl:text-3xl">
+				<li className="sm:text-2xl md:text-3xl lg:text-4xl xl:text-2xl">
 					{date ? day[date?.getDay()] : "Today"}, {date ? lightFormat(date, "dd/MM/yyyy") : "00/00/0000"}
 				</li>
 				<li className="flex text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-5xl 2xl:text-6xl">

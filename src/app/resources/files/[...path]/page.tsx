@@ -5,13 +5,16 @@ import { useEffect, useState } from "react";
 import mime from "mime-types";
 
 export default function ResourcesFilesPage({ params: { path } }: { params: { path: string[] } }) {
-	const [data, setData] = useState<{ path: string | null; msg: string } | null>(null);
+	const [data, setData] = useState<any>(null);
 
 	useEffect(() => {
 		axios
 			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/microsoft/resources/files/${path.join("/")}`)
-			.then((res) => setData(res.data))
-			.catch((error) => setData(error.response.data));
+			.then((res) => setData(res.data.data.path))
+			.catch((error) => {
+				console.log(error.response.data);
+				setData(error.response.data);
+			});
 	}, [path]);
 
 	if (!data) {
@@ -33,7 +36,7 @@ export default function ResourcesFilesPage({ params: { path } }: { params: { pat
 				<span className="sr-only">Loading...</span>
 			</div>
 		);
-	} else if (data.path === null) {
+	} else if (data.data === null) {
 		return <ErrorPreviewer message={data.msg} />;
 	} else {
 		const resolveMimeType = mime.lookup(data.path);
