@@ -36,9 +36,9 @@ const jsonLd: WithContext<Person> = {
 	image: process.env.NEXT_PUBLIC_BASE_URL + "shiroko_seo.jpg",
 	url: process.env.NEXT_PUBLIC_BASE_URL,
 	sameAs: [
-		process.env.NEXT_PUBLIC_FACEBOOK_URL!,
-		process.env.NEXT_PUBLIC_GITHUB_URL!,
-		process.env.NEXT_PUBLIC_DISCORD_URL!,
+		process.env.NEXT_PUBLIC_FACEBOOK_URL,
+		process.env.NEXT_PUBLIC_GITHUB_URL,
+		process.env.NEXT_PUBLIC_DISCORD_URL,
 	],
 };
 

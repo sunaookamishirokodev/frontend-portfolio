@@ -39,14 +39,15 @@ export default function DisplayResources({ data, path }: { data: OneDriveSharing
 						creator: createdBy,
 						dateModified: lightFormat(lastModifiedDateTime, "dd-MM-yyyy"),
 						url:
-							process.env.NEXT_PUBLIC_BASE_URL + type === "folder"
-								? "folders"
-								: "files" + "/" + (path?.join("/") || ""),
+							process.env.NEXT_PUBLIC_BASE_URL +
+							(type === "folder" ? "folders" : "files") +
+							"/" +
+							(path?.join("/") || ""),
 						size,
 						reviewRating: {
 							"@type": "Rating",
-							bestRating: "5",
-							worstRating: "1",
+							bestRating: 5,
+							worstRating: 1,
 						},
 					};
 				},

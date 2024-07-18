@@ -17,19 +17,19 @@ export default function SocialPlatform({
 			{[
 				{
 					method: "Github",
-					url: userStats?.userPage || (process.env.NEXT_PUBLIC_GITHUB_URL as string),
+					url: userStats?.userPage || process.env.NEXT_PUBLIC_GITHUB_URL,
 					icon: FaGithub,
 					displayName: userStats?.userDisplayName || "Sunaookami Shiroko",
 				},
 				{
 					method: "Facebook",
-					url: process.env.NEXT_PUBLIC_FACEBOOK_URL as string,
+					url: process.env.NEXT_PUBLIC_FACEBOOK_URL,
 					icon: FaFacebook,
 					displayName: "Trung Lê (Shiroko)",
 				},
 				{
 					method: presence?.user.displayName ?? "Discord",
-					url: process.env.NEXT_PUBLIC_DISCORD_URL as string,
+					url: process.env.NEXT_PUBLIC_DISCORD_URL,
 					icon: FaDiscord,
 					displayName: "Shiroko",
 				},
@@ -62,7 +62,7 @@ export default function SocialPlatform({
 				{[
 					{
 						method: "E-mail (work)",
-						url: process.env.NEXT_PUBLIC_EMAIL_ADDRESS as string,
+						url: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
 						icon: MdAlternateEmail,
 						displayName: "shiroko@elainateam.io",
 					},

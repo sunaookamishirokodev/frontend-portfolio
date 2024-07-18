@@ -53,7 +53,7 @@ export default function Header() {
 			<div className="flex items-center gap-1 md:gap-2">
 				<span>&lt;</span>
 				<Link
-					href={process.env.NEXT_PUBLIC_REPOSITORY_URL as string}
+					href={process.env.NEXT_PUBLIC_REPOSITORY_URL}
 					target="blank"
 					rel="noopener noreferrer"
 					tabIndex={-1}

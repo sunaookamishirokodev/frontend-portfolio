@@ -58,17 +58,17 @@ export default function Presence({ presence }: { presence: Presence | null }) {
 									{[
 										{
 											title: "Facebook",
-											href: process.env.NEXT_PUBLIC_FACEBOOK_URL as string,
+											href: process.env.NEXT_PUBLIC_FACEBOOK_URL,
 											icon: FaFacebook,
 										},
 										{
 											title: "Discord",
-											href: process.env.NEXT_PUBLIC_DISCORD_URL as string,
+											href: process.env.NEXT_PUBLIC_DISCORD_URL,
 											icon: FaDiscord,
 										},
 										{
 											title: "Email",
-											href: process.env.NEXT_PUBLIC_EMAIL_ADDRESS as string,
+											href: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
 											icon: MdAlternateEmail,
 										},
 									].map(({ title, href, icon }, index) => {
