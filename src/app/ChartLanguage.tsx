@@ -2,7 +2,6 @@
 
 import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
-
 const RadialBar = dynamic(() => import("@ant-design/plots").then((mod) => mod.RadialBar), { ssr: false });
 
 export default function ChartLanguage({ data }: { data: GithubStats | null }) {
@@ -30,15 +29,14 @@ export default function ChartLanguage({ data }: { data: GithubStats | null }) {
 	} else {
 		const result: { language: string; score: number; type: string }[] = [];
 		Object.keys(data.languageStatistics).forEach((key) => {
-			result.push({ language: key, score: data.languageStatistics[key], type: "Language used" });
-		});
-
-		Object.keys(data.languageRepositories).forEach((key) => {
-			result.push({
-				language: key,
-				score: data.languageRepositories[key],
-				type: "Repositories used",
-			});
+			result.push(
+				{ language: key, score: data.languageStatistics[key], type: "Language used" },
+				{
+					language: key,
+					score: data.languageRepositories[key],
+					type: "Repositories used",
+				},
+			);
 		});
 
 		result.sort((a, b) => a.score - b.score);

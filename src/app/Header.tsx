@@ -1,24 +1,18 @@
 "use client";
-import { ToggleThemeButton } from "@/components/ToggleThemeButton";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub, FaHome } from "react-icons/fa";
-import { TbMenuDeep } from "react-icons/tb";
-import { GiSkills } from "react-icons/gi";
-import { GrResources } from "react-icons/gr";
-import { useState } from "react";
+import { createContext, Dispatch, SetStateAction, useContext, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
+import { TbMenuDeep } from "react-icons/tb";
+import { MenuState } from "./template";
 
 export default function Header() {
-	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+	const { isOpen, setIsOpen } = useContext(MenuState);
 
 	return (
 		<section className="fixed z-50 flex h-20 w-full justify-between bg-white p-4 dark:bg-black">
-			<Link href={"/"} tabIndex={-1} className="flex items-center">
-				<div>
-					<span className="mr-1">&lt;</span>
-					<span>Shir</span>
-				</div>
+			<Link href={"/"} tabIndex={-1} className="flex items-center md:text-2xl xl:text-3xl">
+				<span>Shir</span>
 				<Image
 					draggable={false}
 					loading="eager"
@@ -30,12 +24,9 @@ export default function Header() {
 					sizes="100vw"
 					className="h-2/5 w-auto rounded-full md:h-2/3"
 				/>
-				<div>
-					<span>ko</span>
-					<span className="ml-1">&gt;</span>
-				</div>
+				<span>ko</span>
 			</Link>
-			<label className="input hidden items-center gap-2 rounded-xl border-black/50 focus-within:border-black focus-within:outline-none md:flex dark:border-white/50 focus-within:dark:border-white">
+			{/* <label className="input hidden items-center gap-2 rounded-xl border-black/50 focus-within:border-black focus-within:outline-none md:flex dark:border-white/50 focus-within:dark:border-white">
 				<input type="text" className="grow" placeholder="Search" />
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -49,50 +40,9 @@ export default function Header() {
 						clipRule="evenodd"
 					/>
 				</svg>
-			</label>
-			<div className="flex items-center gap-1 md:gap-2">
-				<span>&lt;</span>
-				<Link
-					href={process.env.NEXT_PUBLIC_REPOSITORY_URL}
-					target="blank"
-					rel="noopener noreferrer"
-					tabIndex={-1}
-				>
-					<FaGithub aria-label="Repository of this website" className="size-6 md:size-8" />
-				</Link>
-				<HiOutlineSearch className="size-6 md:hidden" />
-				<ToggleThemeButton />
-				<div className="group relative">
-					<TbMenuDeep
-						className="size-7 cursor-pointer md:size-8"
-						onClick={() => setIsMenuOpen(!isMenuOpen)}
-					/>
-					<ul
-						className={`${isMenuOpen && "fade-in -translate-x-1/2"} group-hover:fade-in absolute mt-4 flex translate-x-full flex-col gap-1 rounded-lg bg-colors-primary-100 p-4 text-white transition-transform before:absolute before:-top-4 before:left-0 before:block before:h-4 before:w-full group-hover:-translate-x-1/2 dark:bg-colors-secondary-100 dark:text-black`}
-					>
-						{[
-							{ href: "/", label: "Home", icon: FaHome },
-							{ href: "/skills", label: "Skills", icon: GiSkills },
-							{ href: "/resources", label: "Resources", icon: GrResources },
-						].map(({ href, label, icon }, index) => {
-							const Icon = icon;
-
-							return (
-								<li key={index}>
-									<Link
-										href={href}
-										tabIndex={-1}
-										className="flex items-center gap-1 md:transition-transform md:hover:scale-110"
-									>
-										<Icon />
-										<span>{label}</span>
-									</Link>
-								</li>
-							);
-						})}
-					</ul>
-				</div>
-				<span>/&gt;</span>
+			</label> */}
+			<div className="flex items-center">
+				<TbMenuDeep className="size-7 cursor-pointer md:size-10" onClick={() => setIsOpen(!isOpen)} />
 			</div>
 		</section>
 	);
