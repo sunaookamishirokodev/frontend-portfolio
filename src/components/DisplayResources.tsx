@@ -23,7 +23,7 @@ export default function DisplayResources({ data, path }: { data: OneDriveSharing
 			"@type": "Product",
 			name: path?.[path.length - 1].split("%20").join(" ") || "Resources",
 			description: "Valuable resources you can find here, to contribute further please contact via email",
-			url: process.env.NEXT_PUBLIC_BASE_URL + "resources",
+			url: process.env.NEXT_PUBLIC_BASE_URL + "/resources",
 			aggregateRating: {
 				"@type": "AggregateRating",
 				ratingValue: "5",
@@ -40,7 +40,7 @@ export default function DisplayResources({ data, path }: { data: OneDriveSharing
 						dateModified: lightFormat(lastModifiedDateTime, "dd-MM-yyyy"),
 						url:
 							process.env.NEXT_PUBLIC_BASE_URL +
-							(type === "folder" ? "folders" : "files") +
+							(type === "folder" ? "/folders" : "/files") +
 							"/" +
 							(path?.join("/") || ""),
 						size,

@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			priority: 1,
 		},
 		{
-			url: process.env.NEXT_PUBLIC_BASE_URL + "resources",
+			url: process.env.NEXT_PUBLIC_BASE_URL + "/resources",
 			lastModified: new Date(),
 			changeFrequency: "daily",
 			priority: 0.9,

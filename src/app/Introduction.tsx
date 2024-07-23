@@ -19,7 +19,7 @@ export default function Introduction({ presence }: { presence: Presence | null }
 				width={0}
 				height={0}
 				draggable={false}
-				className={`relative z-50 size-full rounded-full ring-8 xl:size-64 ${colors[presence?.user.status?.type || "offline"]}`}
+				className={`relative z-40 size-full rounded-full ring-8 xl:size-64 pds[ơ${colors[presence?.user.status?.type || "offline"]}`}
 				sizes="100vw"
 				priority
 			/>

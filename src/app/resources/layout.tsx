@@ -11,7 +11,7 @@ const jsonLd: WithContext<Product> = {
 	"@type": "Product",
 	name: "Resources",
 	description: "Valuable resources you can find here, to contribute further please contact via email",
-	url: process.env.NEXT_PUBLIC_BASE_URL + "resources",
+	url: process.env.NEXT_PUBLIC_BASE_URL + "/resources",
 	aggregateRating: {
 		"@type": "AggregateRating",
 		ratingValue: "5",

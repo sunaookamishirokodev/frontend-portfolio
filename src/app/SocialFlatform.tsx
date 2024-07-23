@@ -28,10 +28,10 @@ export default function SocialPlatform({
 					displayName: "Trung Lê (Shiroko)",
 				},
 				{
-					method: presence?.user.displayName ?? "Discord",
+					method: "Discord",
 					url: process.env.NEXT_PUBLIC_DISCORD_URL,
 					icon: FaDiscord,
-					displayName: "Shiroko",
+					displayName: presence?.user.displayName ?? "Shiroko",
 				},
 			].map(({ displayName, url, method, icon }, index) => {
 				const Icon = icon;

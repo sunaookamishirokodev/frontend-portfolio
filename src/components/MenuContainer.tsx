@@ -7,11 +7,14 @@ import { FaHome } from "react-icons/fa";
 import { GiSkills } from "react-icons/gi";
 import { GrResources } from "react-icons/gr";
 import { MdOutlineArrowCircleRight } from "react-icons/md";
+import { usePathname } from "next/navigation";
 
 const ToggleThemeButton = dynamic(() => import("@/components/ToggleThemeButton"), { ssr: false });
 
 export default function MenuContainer() {
 	const { isOpen, setIsOpen } = useContext(MenuState);
+	const pathname = usePathname();
+
 	return (
 		<>
 			<section
@@ -25,8 +28,12 @@ export default function MenuContainer() {
 					<MdOutlineArrowCircleRight onClick={() => setIsOpen(false)} className="size-10 cursor-pointer" />
 				</ul>
 				<div className="my-0.5 flex gap-2 text-sm">
+					{/* account */}
 					<div className="text-white-60">Not logged in yet,</div>
-					<Link href={"/login"} className="cursor-pointer text-white/75 hover:text-white">
+					<Link
+						href={`${process.env.NEXT_PUBLIC_SSO_BASE_URL}?redirect_uri=${process.env.NEXT_PUBLIC_BASE_URL}${pathname}`}
+						className="cursor-pointer text-white/75 hover:text-white"
+					>
 						login now!
 					</Link>
 				</div>
