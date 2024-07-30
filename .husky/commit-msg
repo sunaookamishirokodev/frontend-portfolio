@@ -1,1 +1,1 @@
-bun x commitlint -e
+npx commitlint -e

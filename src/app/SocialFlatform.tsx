@@ -25,7 +25,7 @@ export default function SocialPlatform({
 					method: "Facebook",
 					url: process.env.NEXT_PUBLIC_FACEBOOK_URL,
 					icon: FaFacebook,
-					displayName: "Trung Lê (Shiroko)",
+					displayName: "Sunaookami Shiroko",
 				},
 				{
 					method: "Discord",
