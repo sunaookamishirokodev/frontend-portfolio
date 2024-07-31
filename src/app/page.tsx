@@ -92,8 +92,21 @@ export default function RootPage() {
 						<ChartLanguage data={userStats} />
 					</div>
 					<ul className="widget col-span-full flex flex-col gap-5 xl:col-span-2">
-						{["owo-selfbot", "discordbot-template-v14", "frontend-portfolio"].map((repoName, index) => {
-							return <Repository key={index} owner={userStats?.username} repoName={repoName} />;
+						{[
+							{
+								name: "owo-selfbot",
+								image: `/repositories/owo-selfbot.screenshot.jpg`,
+							},
+							{
+								name: "discordbot-template-v14",
+								image: `/repositories/discordbot-template-v14.screenshot.jpg`,
+							},
+							{
+								name: "frontend-portfolio",
+								image: `/repositories/frontend-portfolio.screenshot.png`,
+							},
+						].map(({ name, image }, index) => {
+							return <Repository key={index} owner={userStats?.username} repoName={name} image={image} />;
 						})}
 					</ul>
 				</div>

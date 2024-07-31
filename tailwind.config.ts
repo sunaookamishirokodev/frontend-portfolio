@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import daisyui from "daisyui";
 
 export const colors = {
 	"primary-100": "#121113",
@@ -13,29 +12,40 @@ export const colors = {
 	offline: "#a8a29e",
 };
 
-const config: Config = {
+const config = {
 	darkMode: ["selector", '[data-theme="black"]'],
-	content: [
-		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-	],
+	content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+	prefix: "",
 	theme: {
+		container: {
+			center: true,
+			padding: "2rem",
+			screens: {
+				"2xl": "1400px",
+			},
+		},
 		extend: {
 			colors: { colors },
-			spacing: {
-				"custom-2xl": "1320px",
-				"custom-xl": "1140px",
-				"custom-lg": "960px",
-				"custom-md": "720px",
-				"custom-sm": "540px",
-				"custom-2sm": "100%",
+			keyframes: {
+				"accordion-down": {
+					from: { height: "0" },
+					to: { height: "var(--radix-accordion-content-height)" },
+				},
+				"accordion-up": {
+					from: { height: "var(--radix-accordion-content-height)" },
+					to: { height: "0" },
+				},
+			},
+			animation: {
+				"accordion-down": "accordion-down 0.2s ease-out",
+				"accordion-up": "accordion-up 0.2s ease-out",
 			},
 		},
 	},
-	plugins: [daisyui],
+	plugins: [require("tailwindcss-animate"), require("daisyui")],
 	daisyui: {
 		themes: ["black", "light"],
 	},
-};
+} satisfies Config;
+
 export default config;

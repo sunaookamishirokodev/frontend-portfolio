@@ -4,7 +4,7 @@
 
 @layer utilities {
 	.layout {
-		@apply mx-auto w-custom-2sm sm:w-custom-sm md:w-custom-md lg:w-custom-lg xl:w-custom-xl 2xl:w-custom-2xl;
+		@apply mx-auto w-full sm:w-[540px] md:w-[720px] lg:w-[960px] xl:w-[1140px] 2xl:w-[1320px];
 	}
 
 	.widget {
