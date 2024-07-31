@@ -10,6 +10,7 @@ import Introduction from "./Introduction";
 import SocialPlatform from "./SocialFlatform";
 import { toast } from "react-toastify";
 import { Person, WithContext } from "schema-dts";
+import Globe from "./Globe";
 
 const jsonLd: WithContext<Person> = {
 	"@context": "https://schema.org",
@@ -88,6 +89,7 @@ export default function RootPage() {
 						<GithubStats userStats={userStats} />
 						<Clock />
 					</div>
+					<Globe />
 					<div className="col-span-3">
 						<ChartLanguage data={userStats} />
 					</div>

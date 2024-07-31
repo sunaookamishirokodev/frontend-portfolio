@@ -100,17 +100,13 @@ export const CardItem = ({
 	const [isMouseEntered] = useMouseEnter();
 
 	useEffect(() => {
-		handleAnimations();
-	}, [isMouseEntered]);
-
-	const handleAnimations = () => {
 		if (!ref.current) return;
 		if (isMouseEntered) {
 			ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
 		} else {
 			ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
 		}
-	};
+	}, [isMouseEntered, rotateX, rotateY, rotateZ, translateX, translateY, translateZ]);
 
 	return (
 		<Tag ref={ref} className={cn("w-fit transition duration-200 ease-linear", className)} {...rest}>
