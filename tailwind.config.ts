@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
 
 export const colors = {
 	"primary-100": "#121113",
@@ -35,17 +36,32 @@ const config = {
 					from: { height: "var(--radix-accordion-content-height)" },
 					to: { height: "0" },
 				},
+				scroll: {
+					to: {
+						transform: "translate(calc(-50% - 0.5rem))",
+					},
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
+				scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
 			},
 		},
 	},
-	plugins: [require("tailwindcss-animate"), require("daisyui")],
+	plugins: [require("tailwindcss-animate"), require("daisyui"), addVariablesForColors],
 	daisyui: {
 		themes: ["black", "light"],
 	},
 } satisfies Config;
 
 export default config;
+
+function addVariablesForColors({ addBase, theme }: any) {
+	let allColors = flattenColorPalette(theme("colors"));
+	let newVars = Object.fromEntries(Object.entries(allColors).map(([key, val]) => [`--${key}`, val]));
+
+	addBase({
+		":root": newVars,
+	});
+}

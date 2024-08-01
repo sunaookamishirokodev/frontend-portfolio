@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { Person, WithContext } from "schema-dts";
 import Globe from "./Globe";
 import Repositories from "./Repositories";
+import { InfiniteMovingCard } from "./InfiniteMovingCard";
 
 const jsonLd: WithContext<Person> = {
 	"@context": "https://schema.org",
@@ -88,9 +89,8 @@ export default function RootPage() {
 					<GithubStats userStats={userStats} />
 					<Clock />
 					<ChartLanguage data={userStats} />
-					<div className="col-span-full mb-10 hidden md:block xl:col-span-3">
-						<Globe />
-					</div>
+					<InfiniteMovingCard />
+					<Globe />
 					<Repositories userStats={userStats} />
 				</div>
 			</main>

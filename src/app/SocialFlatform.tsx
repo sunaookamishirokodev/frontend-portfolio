@@ -40,7 +40,7 @@ export default function SocialPlatform({
 					method: "E-mail (personal)",
 					url: "mailto:lethanhtrung.trungle@gmail.com",
 					icon: MdAlternateEmail,
-					displayName: "lethanhtrung.trungle@gmail.com",
+					displayName: "lethanhtrung.trungle",
 				},
 			].map(({ displayName, url, method, icon }, index) => {
 				const Icon = icon;
@@ -50,7 +50,7 @@ export default function SocialPlatform({
 						<Link
 							target="blank"
 							rel="noopener noreferrer"
-							className="flex w-max items-center gap-2 text-sm transition-transform hover:scale-105 md:text-lg lg:origin-left"
+							className="flex w-max items-center gap-2 text-sm transition-transform md:text-lg lg:origin-left lg:hover:scale-105"
 							tabIndex={-1}
 							href={url}
 						>

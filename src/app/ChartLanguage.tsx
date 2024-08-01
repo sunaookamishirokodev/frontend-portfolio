@@ -105,7 +105,7 @@ export default function ChartLanguage({ data }: { data: GithubStats | null }) {
 								tickMargin={8}
 								minTickGap={0}
 								allowDataOverflow
-								tickFormatter={(value: string) => value.slice(0, 5)}
+								tickFormatter={(value: string) => value.slice(0, 4)}
 							/>
 							<ChartTooltip
 								content={
