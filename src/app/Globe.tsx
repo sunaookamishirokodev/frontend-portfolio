@@ -395,7 +395,7 @@ export default function Globe() {
 	];
 
 	return (
-		<div className="relative flex flex-row justify-center bg-white dark:bg-black">
+		<div className="relative flex flex-row justify-center">
 			<div className="relative mx-auto h-full w-full max-w-7xl overflow-hidden px-4 md:h-[40rem]">
 				<motion.div
 					initial={{

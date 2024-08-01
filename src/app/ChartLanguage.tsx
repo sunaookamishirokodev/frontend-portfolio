@@ -60,11 +60,11 @@ export default function ChartLanguage({ data }: { data: GithubStats | null }) {
 		);
 	} else {
 		return (
-			<Card className="widget col-span-3 bg-black">
+			<Card className="widget col-span-3">
 				<CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
 					<div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
 						<CardTitle>Languages used chart</CardTitle>
-						<CardDescription>Showing total languages and repositories used it</CardDescription>
+						<CardDescription>Showing total language score and repositories used it</CardDescription>
 					</div>
 					<div className="flex">
 						{["score", "repositories"].map((key, index) => {
@@ -73,7 +73,7 @@ export default function ChartLanguage({ data }: { data: GithubStats | null }) {
 								<button
 									key={index}
 									data-active={activeChart === chart}
-									className="data-[active=true]:bg-muted/50 relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-l sm:border-t-0 sm:px-8 sm:py-6"
+									className="relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left transition-colors even:border-l data-[active=true]:text-black sm:border-l sm:border-t-0 sm:px-8 sm:py-6 dark:data-[active=true]:text-white"
 									onClick={() => setActiveChart(chart)}
 								>
 									<span className="text-muted-foreground text-xs">{chartConfig[chart].label}</span>
@@ -111,9 +111,9 @@ export default function ChartLanguage({ data }: { data: GithubStats | null }) {
 								content={
 									<ChartTooltipContent
 										hideIndicator
-										className="w-[150px] bg-black text-white dark:bg-white dark:text-black"
+										className="w-[150px] text-white dark:text-black"
 										nameKey="languageName"
-										labelFormatter={(value) => value}
+										label="Language"
 									/>
 								}
 							/>
