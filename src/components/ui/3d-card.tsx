@@ -1,25 +1,34 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { createContext, useContext, useEffect, useRef, useState } from "react";
+import React, {
+	createContext,
+	Dispatch,
+	ElementType,
+	MouseEvent,
+	ReactNode,
+	SetStateAction,
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
 
-const MouseEnterContext = createContext<[boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined>(
-	undefined,
-);
+const MouseEnterContext = createContext<[boolean, Dispatch<SetStateAction<boolean>>] | undefined>(undefined);
 
 export const CardContainer = ({
 	children,
 	className,
 	containerClassName,
 }: {
-	children?: React.ReactNode;
+	children?: ReactNode;
 	className?: string;
 	containerClassName?: string;
 }) => {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [isMouseEntered, setIsMouseEntered] = useState(false);
 
-	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+	const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
 		if (!containerRef.current) return;
 		const { left, top, width, height } = containerRef.current.getBoundingClientRect();
 		const x = (e.clientX - left - width / 2) / 25;
@@ -27,12 +36,12 @@ export const CardContainer = ({
 		containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
 	};
 
-	const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+	const handleMouseEnter = (e: MouseEvent<HTMLDivElement>) => {
 		setIsMouseEntered(true);
 		if (!containerRef.current) return;
 	};
 
-	const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+	const handleMouseLeave = (e: MouseEvent<HTMLDivElement>) => {
 		if (!containerRef.current) return;
 		setIsMouseEntered(false);
 		containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
@@ -65,7 +74,7 @@ export const CardContainer = ({
 	);
 };
 
-export const CardBody = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+export const CardBody = ({ children, className }: { children: ReactNode; className?: string }) => {
 	return (
 		<div className={cn("h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]", className)}>
 			{children}
@@ -85,8 +94,8 @@ export const CardItem = ({
 	rotateZ = 0,
 	...rest
 }: {
-	as?: React.ElementType;
-	children: React.ReactNode;
+	as?: ElementType;
+	children: ReactNode;
 	className?: string;
 	translateX?: number | string;
 	translateY?: number | string;

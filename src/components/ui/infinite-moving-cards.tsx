@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IconType } from "react-icons/lib";
 
 export const InfiniteMovingCards = ({
@@ -22,8 +22,8 @@ export const InfiniteMovingCards = ({
 	pauseOnHover?: boolean;
 	className?: string;
 }) => {
-	const containerRef = React.useRef<HTMLDivElement>(null);
-	const scrollerRef = React.useRef<HTMLUListElement>(null);
+	const containerRef = useRef<HTMLDivElement>(null);
+	const scrollerRef = useRef<HTMLUListElement>(null);
 
 	useEffect(() => {
 		const getDirection = () => {
@@ -63,7 +63,7 @@ export const InfiniteMovingCards = ({
 		}
 	}, [direction, speed]);
 
-	const [start, setStart] = useState(false);
+	const [start, setStart] = useState<boolean>(false);
 
 	return (
 		<div ref={containerRef} className={cn("scroller relative z-20 overflow-hidden", className)}>
