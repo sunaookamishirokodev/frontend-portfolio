@@ -1,7 +1,4 @@
-import HoverButton from "@/classes/HoverButton";
-
 import Link from "next/link";
-
 import { FaDiscord, FaFacebook, FaGithub } from "react-icons/fa6";
 import { MdAlternateEmail } from "react-icons/md";
 
@@ -53,11 +50,11 @@ export default function SocialPlatform({
 						<Link
 							target="blank"
 							rel="noopener noreferrer"
-							className="flex items-center gap-2 text-sm md:text-lg"
+							className="flex w-max items-center gap-2 text-sm transition-transform hover:scale-105 md:text-lg lg:origin-left"
 							tabIndex={-1}
 							href={url}
 						>
-							<Icon className="size-5" /> [<span>{method}</span>] <span>{displayName}</span>
+							<Icon className="size-5" /> <span>[ {method} ]</span> <span>{displayName}</span>
 						</Link>
 					</li>
 				);

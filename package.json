@@ -4,7 +4,7 @@
 	"private": false,
 	"license": "MIT",
 	"scripts": {
-		"dev": "next dev -p 2222",
+		"dev": "next dev --turbo -p 2222",
 		"build": "next build",
 		"start": "next start -p 2222",
 		"lint": "next lint",
@@ -29,6 +29,7 @@
 		"react": "^18",
 		"react-dom": "^18",
 		"react-icons": "^5.2.1",
+		"react-scroll-to-top": "^3.0.0",
 		"react-toastify": "^10.0.5",
 		"recharts": "^2.12.7",
 		"schema-dts": "^1.1.2",

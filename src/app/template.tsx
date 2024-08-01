@@ -6,6 +6,8 @@ import { ToastContainer } from "react-toastify";
 import Header from "./Header";
 import MenuContainer from "@/components/MenuContainer";
 import { createContext, Dispatch, SetStateAction, useState } from "react";
+import ScrollToTop from "react-scroll-to-top";
+import Image from "next/image";
 export const MenuState = createContext<{ isOpen: boolean; setIsOpen: Dispatch<SetStateAction<boolean>> }>({
 	isOpen: false,
 	setIsOpen: () => false,
@@ -43,6 +45,22 @@ export default function RootTemplate({
 					<MenuContainer />
 				</MenuState.Provider>
 			</ThemeProvider>
+			<ScrollToTop
+				smooth
+				viewBox="0 0 24 24"
+				title="Scroll to top"
+				className="rounded-full fill-black dark:fill-white"
+				component={
+					<Image
+						height={0}
+						width={0}
+						src={"/shiroko_logo_circle.png"}
+						alt="Shiroko Logo Circle"
+						sizes="100vw"
+						className="h-auto w-full"
+					/>
+				}
+			/>
 		</body>
 	);
 }
