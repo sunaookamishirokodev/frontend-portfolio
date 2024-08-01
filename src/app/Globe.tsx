@@ -395,7 +395,7 @@ export default function Globe() {
 	];
 
 	return (
-		<div className="widget relative col-span-3 flex flex-row justify-center bg-white dark:bg-black">
+		<div className="relative flex flex-row justify-center bg-white dark:bg-black">
 			<div className="relative mx-auto h-full w-full max-w-7xl overflow-hidden px-4 md:h-[40rem]">
 				<motion.div
 					initial={{
@@ -412,7 +412,7 @@ export default function Globe() {
 					className="div"
 				>
 					<h2 className="text-center text-xl font-bold text-black md:text-4xl dark:text-white">
-						This is where you and I live
+						This is where you and me live
 					</h2>
 					<p className="mx-auto mt-2 max-w-md text-center text-base font-normal text-neutral-700 md:text-lg dark:text-neutral-200">
 						And I hope we all are friends

@@ -25,7 +25,7 @@ export default function Introduction({ presence }: { presence: Presence | null }
 			/>
 
 			<div className="flex-1 select-none">
-				<div className="relative flex justify-center text-xl md:justify-normal md:text-4xl xl:text-5xl">
+				<div className="relative flex justify-center text-xl md:text-4xl xl:justify-normal xl:text-5xl">
 					<div className="absolute bottom-full z-[1] h-full w-full bg-white dark:bg-black"></div>
 					<span className="text-violet-500">Console</span>.<span className="text-green-500">log</span>
 					<span className="text-orange-500">(</span>
@@ -38,7 +38,7 @@ export default function Introduction({ presence }: { presence: Presence | null }
 					<span className="text-yellow-500">&quot;</span>
 					<span className="text-orange-500">)</span>
 					<div className="absolute left-0 top-1/3 w-full bg-white text-sm md:text-2xl xl:text-4xl dark:bg-black">
-						<div className="py-2 text-center md:text-start">
+						<div className="py-2 text-center xl:text-start">
 							<span>I&apos;m</span> <span className="text-blue-500">Shiroko</span> - a{" "}
 							<TypeIt
 								className="text-highlight"

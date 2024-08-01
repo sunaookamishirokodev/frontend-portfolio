@@ -12,7 +12,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Repositories({ userStats }: { userStats: GithubStats | null }) {
 	return (
-		<ul className="widget col-span-full flex flex-col gap-5 xl:col-span-2">
+		<ul className="widget col-span-full flex flex-col gap-5 p-0 xl:col-span-2">
 			{[
 				{
 					name: "owo-selfbot",
@@ -57,7 +57,10 @@ export function Repository({
 
 	if (!data) {
 		return (
-			<li role="status" className="flex animate-pulse flex-col gap-2 space-y-2.5 bg-white p-2 dark:bg-black">
+			<li
+				role="status"
+				className="flex animate-pulse flex-col gap-2 space-y-2.5 rounded-xl bg-white p-2 dark:bg-black"
+			>
 				<div className="flex w-full items-center">
 					<div className="h-2.5 w-32 rounded-full bg-gray-200 dark:bg-gray-700"></div>
 					<div className="ms-2 h-2.5 w-24 rounded-full bg-gray-300 dark:bg-gray-600"></div>
@@ -102,15 +105,11 @@ export function Repository({
 	} else {
 		return (
 			<CardContainer className="col-span-3">
-				<CardBody className="group/card relative h-auto w-auto rounded-xl bg-gray-50 p-6 dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1]">
+				<CardBody className="group/card relative h-full w-full rounded-xl bg-gray-50 p-6 dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1]">
 					<CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-white">
 						{data.full_name}
 					</CardItem>
-					<CardItem
-						as="p"
-						translateZ="60"
-						className="mt-2 max-w-sm text-sm text-neutral-500 dark:text-neutral-300"
-					>
+					<CardItem as="p" translateZ="60" className="mt-2 text-sm text-neutral-500 dark:text-neutral-300">
 						{data.description || "No description was found"}
 					</CardItem>
 					<CardItem translateZ="100" className="mt-4 w-full">

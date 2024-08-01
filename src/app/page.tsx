@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import ChartLanguage from "./ChartLanguage";
 import Clock from "./Clock";
@@ -88,7 +88,9 @@ export default function RootPage() {
 					<GithubStats userStats={userStats} />
 					<Clock />
 					<ChartLanguage data={userStats} />
-					<Globe />
+					<div className="col-span-full mb-10 hidden md:block xl:col-span-3">
+						<Globe />
+					</div>
 					<Repositories userStats={userStats} />
 				</div>
 			</main>

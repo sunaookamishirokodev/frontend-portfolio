@@ -88,7 +88,7 @@ export default function ChartLanguage({ data }: { data: GithubStats | null }) {
 					</div>
 				</CardHeader>
 				<CardContent className="px-2 sm:p-6">
-					<ChartContainer config={chartConfig} className="aspect-auto h-[100px] w-full">
+					<ChartContainer config={chartConfig} className="aspect-auto h-[250px] w-full xl:h-[100px]">
 						<BarChart
 							accessibilityLayer={false}
 							data={results}

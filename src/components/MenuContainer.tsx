@@ -32,7 +32,7 @@ export default function MenuContainer() {
 					<div className="text-white-60">Not logged in yet,</div>
 					<Link
 						href={`${process.env.NEXT_PUBLIC_SSO_BASE_URL}?redirect_uri=${process.env.NEXT_PUBLIC_BASE_URL}${pathname}`}
-						className="cursor-pointer text-white/75 hover:text-white"
+						className="cursor-pointer text-black/75 hover:text-black dark:text-white/75 dark:hover:text-white"
 					>
 						login now!
 					</Link>

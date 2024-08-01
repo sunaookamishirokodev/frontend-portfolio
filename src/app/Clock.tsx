@@ -41,7 +41,7 @@ export default function Clock() {
 	return (
 		<section
 			title="Cre: AutumnVNChino"
-			className="widget col-span-2 grid flex-1 select-none grid-cols-3 items-center gap-5"
+			className="widget col-span-full grid flex-1 select-none grid-cols-3 items-center gap-5 xl:col-span-2"
 		>
 			<div className="relative">
 				<svg viewBox="0 0 500 500" className="fill-[#AADDFF]">

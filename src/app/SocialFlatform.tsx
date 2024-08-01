@@ -53,7 +53,7 @@ export default function SocialPlatform({
 						<Link
 							target="blank"
 							rel="noopener noreferrer"
-							className="flex items-center gap-2 text-xl"
+							className="flex items-center gap-2 text-sm md:text-lg"
 							tabIndex={-1}
 							href={url}
 						>
