@@ -13,7 +13,7 @@ export default function SocialPlatform({
 	userStats: GithubStats | null;
 }) {
 	return (
-		<>
+		<ul className="widget col-span-3 flex flex-col gap-3">
 			{[
 				{
 					method: "Github",
@@ -31,67 +31,37 @@ export default function SocialPlatform({
 					method: "Discord",
 					url: process.env.NEXT_PUBLIC_DISCORD_URL,
 					icon: FaDiscord,
-					displayName: presence?.user.displayName ?? "Shiroko",
+					displayName: presence?.user.displayName ?? "Sunaookami Shiroko",
+				},
+				{
+					method: "E-mail (work)",
+					url: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
+					icon: MdAlternateEmail,
+					displayName: "shiroko@elainateam.io",
+				},
+				{
+					method: "E-mail (personal)",
+					url: "mailto:lethanhtrung.trungle@gmail.com",
+					icon: MdAlternateEmail,
+					displayName: "lethanhtrung.trungle@gmail.com",
 				},
 			].map(({ displayName, url, method, icon }, index) => {
 				const Icon = icon;
 
 				return (
-					<Link
-						target="blank"
-						ref={(ref) => {
-							if (!ref) return;
-							if (window.innerWidth < 768) return;
-							new HoverButton(ref);
-						}}
-						rel="noopener noreferrer"
-						href={url}
-						tabIndex={-1}
-						key={index}
-						className="widget flex h-full flex-col gap-3 md:aspect-square"
-					>
-						<div className="flex items-center gap-3">
-							<Icon className="size-12" /> <span className="text-2xl">{method}</span>
-						</div>
-						<div>{displayName}</div>
-					</Link>
+					<li key={index}>
+						<Link
+							target="blank"
+							rel="noopener noreferrer"
+							className="flex items-center gap-2 text-xl"
+							tabIndex={-1}
+							href={url}
+						>
+							<Icon className="size-5" /> [<span>{method}</span>] <span>{displayName}</span>
+						</Link>
+					</li>
 				);
 			})}
-
-			<div className="col-span-full flex flex-col gap-2 md:gap-6 xl:col-span-2 xl:gap-12">
-				{[
-					{
-						method: "E-mail (work)",
-						url: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
-						icon: MdAlternateEmail,
-						displayName: "shiroko@elainateam.io",
-					},
-					{
-						method: "E-mail (personal)",
-						url: "mailto:lethanhtrung.trungle@gmail.com",
-						icon: MdAlternateEmail,
-						displayName: "lethanhtrung.trungle@gmail.com",
-					},
-				].map(({ displayName, icon, method, url }, index) => {
-					const Icon = icon;
-
-					return (
-						<Link
-							rel="noopener noreferrer"
-							href={url}
-							tabIndex={-1}
-							key={index}
-							className="widget flex h-full items-center gap-3"
-						>
-							<Icon className="size-12" />
-							<div className="flex flex-col">
-								<span className="text-2xl">{method}</span>
-								<span>{displayName}</span>
-							</div>
-						</Link>
-					);
-				})}
-			</div>
-		</>
+		</ul>
 	);
 }

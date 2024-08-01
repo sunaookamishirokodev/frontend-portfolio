@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const { NEXT_PUBLIC_FACEBOOK_URL, NEXT_PUBLIC_BASE_URL } = process.env;
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 	applicationName: "Personal Portfolio",
 	authors: {
 		url: NEXT_PUBLIC_FACEBOOK_URL,
-		name: "Trung Lê (Shiroko)",
+		name: "Sunaookami Shiroko (Shiroko)",
 	},
 	generator: "NextJS TailwinCSS TypeScript",
 	keywords: [

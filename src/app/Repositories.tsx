@@ -8,9 +8,32 @@ import { FaStar } from "react-icons/fa";
 import { FaCodeFork, FaEye } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import { ScrollArea } from "./ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
-export default function Repository({
+export default function Repositories({ userStats }: { userStats: GithubStats | null }) {
+	return (
+		<ul className="widget col-span-full flex flex-col gap-5 xl:col-span-2">
+			{[
+				{
+					name: "owo-selfbot",
+					image: `/repositories/owo-selfbot.screenshot.jpg`,
+				},
+				{
+					name: "discordbot-template-v14",
+					image: `/repositories/discordbot-template-v14.screenshot.jpg`,
+				},
+				{
+					name: "frontend-portfolio",
+					image: `/repositories/frontend-portfolio.screenshot.png`,
+				},
+			].map(({ name, image }, index) => {
+				return <Repository key={index} owner={userStats?.username} repoName={name} image={image} />;
+			})}
+		</ul>
+	);
+}
+
+export function Repository({
 	owner = "sunaookamishirokodev",
 	repoName,
 	image,
@@ -50,6 +73,19 @@ export default function Repository({
 					<div className="ms-2 h-2.5 w-80 rounded-full bg-gray-200 dark:bg-gray-700"></div>
 					<div className="ms-2 h-2.5 w-full rounded-full bg-gray-300 dark:bg-gray-600"></div>
 				</div>
+				<div className="flex aspect-video h-full animate-pulse items-center justify-center rounded-lg bg-gray-300 dark:bg-gray-700">
+					<svg
+						className="h-10 w-10 text-gray-200 dark:text-gray-600"
+						aria-hidden="true"
+						xmlns="http://www.w3.org/2000/svg"
+						fill="currentColor"
+						viewBox="0 0 16 20"
+					>
+						<path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+						<path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
+					</svg>
+					<span className="sr-only">Loading...</span>
+				</div>
 				<div className="flex w-full max-w-[480px] items-center">
 					<div className="ms-2 h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700"></div>
 					<div className="ms-2 h-2.5 w-full rounded-full bg-gray-300 dark:bg-gray-600"></div>
@@ -65,7 +101,7 @@ export default function Repository({
 		);
 	} else {
 		return (
-			<CardContainer className="">
+			<CardContainer className="col-span-3">
 				<CardBody className="group/card relative h-auto w-auto rounded-xl bg-gray-50 p-6 dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1]">
 					<CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-white">
 						{data.full_name}
@@ -132,45 +168,6 @@ export default function Repository({
 					</div>
 				</CardBody>
 			</CardContainer>
-			// <li className="rounded-lg bg-white p-4 md:transition-transform md:hover:scale-105 dark:bg-black">
-			// 	<Link target="blank" rel="noopener noreferrer" href={data.html_url} className="flex flex-col gap-2">
-			// 		<span className="text-2xl">{data.name}</span>
-			// 		<span className="text-md">{data.description || "No description was found"}</span>
-			// 		<Image
-			// 			src={image}
-			// 			alt="Screen shot"
-			// 			width={0}
-			// 			height={0}
-			// 			className="h-auto w-full rounded-lg"
-			// 			sizes="100vw"
-			// 		/>
-			// 		<div className="flex justify-between">
-			// 			<ul className="flex gap-4">
-			// 				{[
-			// 					{ icon: FaStar, amount: data.stargazers_count },
-			// 					{ icon: FaCodeFork, amount: data.forks_count },
-			// 					{ icon: FaEye, amount: data.watchers_count },
-			// 				].map(({ icon, amount }, index) => {
-			// 					const Icon = icon;
-
-			// 					return (
-			// 						<li key={index} className="flex items-center gap-1">
-			// 							<Icon />
-			// 							<span className="text-lg">{amount}</span>
-			// 						</li>
-			// 					);
-			// 				})}
-			// 			</ul>
-			// 			<div className="flex items-center gap-2">
-			// 				<div
-			// 					className="size-4 rounded-full"
-			// 					style={{ backgroundColor: ColorLanguage(data.language) }}
-			// 				/>
-			// 				<span>{data.language}</span>
-			// 			</div>
-			// 		</div>
-			// 	</Link>
-			// </li>
 		);
 	}
 }

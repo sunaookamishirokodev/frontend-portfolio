@@ -1,11 +1,43 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import dynamic from "next/dynamic";
-const RadialBar = dynamic(() => import("@ant-design/plots").then((mod) => mod.RadialBar), { ssr: false });
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { useEffect, useState } from "react";
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+
+const chartConfig = {
+	views: {
+		label: "Page Views",
+	},
+	score: {
+		label: "Score",
+	},
+	repositories: {
+		label: "Repositories",
+	},
+} satisfies ChartConfig;
 
 export default function ChartLanguage({ data }: { data: GithubStats | null }) {
-	const { theme } = useTheme();
+	const [activeChart, setActiveChart] = useState<keyof typeof chartConfig>("score");
+	const [results, setResults] = useState<{ language: string; score: number; repositories: number }[]>([]);
+
+	useEffect(() => {
+		if (data) {
+			const result: { language: string; score: number; repositories: number }[] = [];
+
+			Object.keys(data.languageStatistics).forEach((key) => {
+				result.push({
+					language: key,
+					score: data.languageStatistics[key],
+					repositories: data.languageRepositories[key],
+				});
+			});
+
+			result.sort((a, b) => a.score - b.score);
+
+			setResults(result);
+		}
+	}, [data]);
 
 	if (!data) {
 		return (
@@ -27,30 +59,72 @@ export default function ChartLanguage({ data }: { data: GithubStats | null }) {
 			</div>
 		);
 	} else {
-		const result: { language: string; score: number; type: string }[] = [];
-		Object.keys(data.languageStatistics).forEach((key) => {
-			result.push(
-				{ language: key, score: data.languageStatistics[key], type: "Language used" },
-				{
-					language: key,
-					score: data.languageRepositories[key],
-					type: "Repositories used",
-				},
-			);
-		});
-
-		result.sort((a, b) => a.score - b.score);
-
 		return (
-			<RadialBar
-				className="widget"
-				data={result}
-				xField="language"
-				yField="score"
-				theme={theme === "black" ? "classicDark" : "classic"}
-				group={true}
-				colorField="type"
-			/>
+			<Card className="widget col-span-3 bg-black">
+				<CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
+					<div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
+						<CardTitle>Languages used chart</CardTitle>
+						<CardDescription>Showing total languages and repositories used it</CardDescription>
+					</div>
+					<div className="flex">
+						{["score", "repositories"].map((key, index) => {
+							const chart = key as keyof typeof chartConfig;
+							return (
+								<button
+									key={index}
+									data-active={activeChart === chart}
+									className="data-[active=true]:bg-muted/50 relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-l sm:border-t-0 sm:px-8 sm:py-6"
+									onClick={() => setActiveChart(chart)}
+								>
+									<span className="text-muted-foreground text-xs">{chartConfig[chart].label}</span>
+									<span className="text-lg font-bold leading-none sm:text-3xl">
+										{results
+											.reduce((acc, curr) => acc + curr[key as "score" | "repositories"], 0)
+											.toLocaleString()}
+									</span>
+								</button>
+							);
+						})}
+					</div>
+				</CardHeader>
+				<CardContent className="px-2 sm:p-6">
+					<ChartContainer config={chartConfig} className="aspect-auto h-[100px] w-full">
+						<BarChart
+							accessibilityLayer={false}
+							data={results}
+							margin={{
+								left: 12,
+								right: 12,
+							}}
+						>
+							<CartesianGrid vertical={false} />
+							<XAxis
+								dataKey="language"
+								tickLine={false}
+								axisLine={false}
+								tickMargin={8}
+								minTickGap={0}
+								allowDataOverflow
+								tickFormatter={(value: string) => value.slice(0, 5)}
+							/>
+							<ChartTooltip
+								content={
+									<ChartTooltipContent
+										hideIndicator
+										className="w-[150px] bg-black text-white dark:bg-white dark:text-black"
+										nameKey="languageName"
+										labelFormatter={(value) => value}
+									/>
+								}
+							/>
+							<Bar
+								dataKey={activeChart}
+								className="fill-colors-primary-200 dark:fill-colors-secondary-200"
+							/>
+						</BarChart>
+					</ChartContainer>
+				</CardContent>
+			</Card>
 		);
 	}
 }

@@ -3,7 +3,6 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { useTheme } from "next-themes";
 import { JetBrains_Mono } from "next/font/google";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
 import MenuContainer from "@/components/MenuContainer";
 import { createContext, Dispatch, SetStateAction, useState } from "react";

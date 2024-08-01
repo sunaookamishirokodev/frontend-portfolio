@@ -2,7 +2,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
-import Repository from "../components/Repository";
 import ChartLanguage from "./ChartLanguage";
 import Clock from "./Clock";
 import GithubStats from "./GithubStats";
@@ -11,6 +10,7 @@ import SocialPlatform from "./SocialFlatform";
 import { toast } from "react-toastify";
 import { Person, WithContext } from "schema-dts";
 import Globe from "./Globe";
+import Repositories from "./Repositories";
 
 const jsonLd: WithContext<Person> = {
 	"@context": "https://schema.org",
@@ -85,32 +85,11 @@ export default function RootPage() {
 				<Introduction presence={presence} />
 				<div className="flex flex-col gap-2 md:grid md:grid-cols-3 md:gap-6 md:p-4 xl:grid-cols-5 xl:gap-12">
 					<SocialPlatform presence={presence} userStats={userStats} />
-					<div className="col-span-full flex flex-col gap-2 md:gap-6 xl:col-span-2 xl:gap-12">
-						<GithubStats userStats={userStats} />
-						<Clock />
-					</div>
+					<GithubStats userStats={userStats} />
+					<Clock />
+					<ChartLanguage data={userStats} />
 					<Globe />
-					<div className="col-span-3">
-						<ChartLanguage data={userStats} />
-					</div>
-					<ul className="widget col-span-full flex flex-col gap-5 xl:col-span-2">
-						{[
-							{
-								name: "owo-selfbot",
-								image: `/repositories/owo-selfbot.screenshot.jpg`,
-							},
-							{
-								name: "discordbot-template-v14",
-								image: `/repositories/discordbot-template-v14.screenshot.jpg`,
-							},
-							{
-								name: "frontend-portfolio",
-								image: `/repositories/frontend-portfolio.screenshot.png`,
-							},
-						].map(({ name, image }, index) => {
-							return <Repository key={index} owner={userStats?.username} repoName={name} image={image} />;
-						})}
-					</ul>
+					<Repositories userStats={userStats} />
 				</div>
 			</main>
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

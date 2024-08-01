@@ -6,7 +6,7 @@ import { RiGitRepositoryCommitsLine, RiGitRepositoryLine } from "react-icons/ri"
 
 export default function GithubStats({ userStats }: { userStats: GithubStats | null }) {
 	return (
-		<div className="widget text-md md:text-md grid grid-cols-3 justify-between gap-5">
+		<div className="widget text-md md:text-md col-span-2 grid grid-cols-3 justify-between gap-5">
 			<ul className="col-span-2">
 				{[
 					{
