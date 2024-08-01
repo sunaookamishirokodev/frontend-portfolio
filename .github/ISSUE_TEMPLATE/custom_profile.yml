@@ -1,0 +1,46 @@
+name: Custom Profile
+description: Request to custom your profile in my website.
+labels: [request-unconfirmed, request]
+body:
+    - type: textarea
+      attributes:
+          label: Your username or id
+          description: "Please enter your username or id."
+      validations:
+          required: true
+
+    - type: dropdown
+      attributes:
+          label: Sponsor me
+          description: "You need donate for me to get custom profile."
+          multiple: false
+          options:
+              - "true"
+              - "false"
+      validations:
+          required: true
+
+    - type: textarea
+      attributes:
+          label: Description
+          description: "Please briefly describe the profile you are requesting."
+      validations:
+          required: true
+
+    - type: dropdown
+      attributes:
+          label: Method
+          description: "The method I can contact with you"
+          options:
+              - Email (shiroko@elainateam.io)
+              - Facebook (sunaookamishiroko.developer)
+              - Discord (shiroko.dev)
+      validations:
+          required: true
+
+    - type: textarea
+      attributes:
+          label: Your contact information
+          description: "Please provide your contact method and contact information."
+      validations:
+          required: true

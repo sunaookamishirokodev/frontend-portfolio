@@ -1,0 +1,45 @@
+name: Bug Report
+description: Broken or unintended behavior with my website.
+labels: [bug-unconfirmed, question]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              ## Issue Details
+
+    - type: textarea
+      attributes:
+          label: Description
+          description: "Please briefly describe your issue."
+      validations:
+          required: true
+
+    - type: textarea
+      attributes:
+          label: Error Message
+          description: "Please provide any error message you are receiving and a stack trace."
+
+    - type: textarea
+      attributes:
+          label: Relevant Code Snippets
+          description: "Please provide relevant code snippets that can be used to reproduce this issue."
+          render: javascript
+      validations:
+          required: true
+
+    - type: textarea
+      attributes:
+          label: Expected Behavior
+          description: "Please describe what you expect the behavior to be."
+      validations:
+          required: true
+
+    - type: dropdown
+      attributes:
+          label: Source
+          description: "Are you an internal or external customer?"
+          options:
+              - Internal (Shiroko's Network)
+              - External (Customer)
+      validations:
+          required: true

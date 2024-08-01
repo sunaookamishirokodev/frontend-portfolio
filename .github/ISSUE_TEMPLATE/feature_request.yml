@@ -1,0 +1,40 @@
+name: Feature request
+description: Suggest a feature for my website.
+labels: [feature-unconfirmed, question]
+body:
+    - type: dropdown
+      attributes:
+          label: Page
+          multiple: false
+          options:
+              - "Home page"
+              - "Resources page"
+      validations:
+          required: true
+
+    - type: dropdown
+      attributes:
+          label: Confidential
+          multiple: false
+          options:
+              - "true"
+              - "false"
+      validations:
+          required: true
+
+    - type: textarea
+      attributes:
+          label: Description
+          description: "Please briefly describe the feature you are requesting."
+      validations:
+          required: true
+
+    - type: dropdown
+      attributes:
+          label: Source
+          description: "Are you an internal or external customer?"
+          options:
+              - Internal (Shiroko's Network)
+              - External (Customer)
+      validations:
+          required: true
