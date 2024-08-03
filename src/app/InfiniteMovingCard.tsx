@@ -44,6 +44,7 @@ export function InfiniteMovingCard() {
 						url: "https://daisyui.com/",
 					},
 				]}
+				speed="slow"
 			/>
 		</div>
 	);

@@ -1,6 +1,9 @@
+"use client";
 import Image from "next/image";
 import TypeIt from "typeit-react";
 import Presence from "./Presence";
+import { useEffect, useState } from "react";
+import { io } from "socket.io-client";
 
 const colors = {
 	online: "ring-colors-online",
@@ -9,7 +12,29 @@ const colors = {
 	offline: "ring-colors-offline",
 };
 
-export default function Introduction({ presence }: { presence: Presence | null }) {
+export default function Introduction() {
+	const [presence, setPresence] = useState<null | Presence>(null);
+
+	useEffect(() => {
+		const socket = io("wss://gateway.shirokodev.site/", {
+			withCredentials: true,
+		});
+
+		socket.emit("getPresence");
+
+		socket.on("updatePresence", (data) => {
+			data = JSON.parse(data);
+			setPresence(data);
+		});
+
+		socket.on("error", (data) => {
+			console.log(data);
+		});
+
+		return () => {
+			socket.disconnect();
+		};
+	}, []);
 	return (
 		<section className="flex flex-col gap-10 p-4 xl:flex-row">
 			<Image

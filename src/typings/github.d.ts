@@ -1,10 +1,4 @@
 interface GithubStats {
-	username: string;
-	userDisplayName: string;
-	userAvatarUrl: string;
-	userPage: string;
-	languageStatistics: { [key: string]: number };
-	languageRepositories: { [key: string]: number };
 	totalStars: number;
 	totalForks: number;
 	totalCommitContributions: number;
@@ -191,4 +185,10 @@ interface GithubUser {
 	following: number;
 	created_at: string;
 	updated_at: string;
+}
+
+interface GithubLanguages {
+	language: string;
+	repositories: number;
+	score: number;
 }

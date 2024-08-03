@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ReactNode } from "react";
 import { Product, WithContext } from "schema-dts";
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ const jsonLd: WithContext<Product> = {
 export default function ResourcesLayout({
 	children,
 }: Readonly<{
-	children: React.ReactNode;
+	children: ReactNode;
 }>) {
 	return (
 		<>

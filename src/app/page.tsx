@@ -1,17 +1,12 @@
-"use client";
-import axios from "axios";
-import { Fragment, useEffect, useState } from "react";
-import { io } from "socket.io-client";
+import { Person, WithContext } from "schema-dts";
 import ChartLanguage from "./ChartLanguage";
 import Clock from "./Clock";
 import GithubStats from "./GithubStats";
-import Introduction from "./Introduction";
-import SocialPlatform from "./SocialFlatform";
-import { toast } from "react-toastify";
-import { Person, WithContext } from "schema-dts";
 import Globe from "./Globe";
-import Repositories from "./Repositories";
 import { InfiniteMovingCard } from "./InfiniteMovingCard";
+import Introduction from "./Introduction";
+import Repositories from "./Repositories";
+import SocialPlatform from "./SocialFlatform";
 
 const jsonLd: WithContext<Person> = {
 	"@context": "https://schema.org",
@@ -23,7 +18,7 @@ const jsonLd: WithContext<Person> = {
 	email: "shiroko@elainateam.io",
 	gender: "male",
 	jobTitle: ["Developer", "Fullstack Developer"],
-	sponsor: ["https://buymeacoffee.com/sunaookamishirokodev"],
+	sponsor: ["https://buymeacoffee.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}"],
 	affiliation: ["Elaina Team"],
 	alumniOf: ["Phuoc Long 1 Primary School", "Vo Thi Sau Secondary School"],
 	award: [
@@ -45,53 +40,18 @@ const jsonLd: WithContext<Person> = {
 };
 
 export default function RootPage() {
-	const [presence, setPresence] = useState<null | Presence>(null);
-	const [userStats, setUserStats] = useState<null | GithubStats>(null);
-
-	useEffect(() => {
-		axios
-			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/stats`)
-			.then((res) => setUserStats(res.data.data))
-			.catch((error) =>
-				toast.error(error.response.data.msg, {
-					toastId: "error",
-				}),
-			);
-	}, []);
-
-	useEffect(() => {
-		const socket = io("wss://gateway.shirokodev.site/", {
-			withCredentials: true,
-		});
-
-		socket.emit("getPresence");
-
-		socket.on("updatePresence", (data) => {
-			data = JSON.parse(data);
-			setPresence(data);
-		});
-
-		socket.on("error", (data) => {
-			console.log(data);
-		});
-
-		return () => {
-			socket.disconnect();
-		};
-	}, []);
-
 	return (
 		<>
 			<main className="flex flex-col gap-32 xl:gap-10">
-				<Introduction presence={presence} />
+				<Introduction />
 				<div className="flex flex-col gap-2 md:grid md:grid-cols-3 md:gap-6 md:p-4 xl:grid-cols-5 xl:gap-12">
-					<SocialPlatform presence={presence} userStats={userStats} />
-					<GithubStats userStats={userStats} />
+					<SocialPlatform />
+					<GithubStats />
 					<Clock />
-					<ChartLanguage data={userStats} />
+					<ChartLanguage />
 					<InfiniteMovingCard />
 					<Globe />
-					<Repositories userStats={userStats} />
+					<Repositories />
 				</div>
 			</main>
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

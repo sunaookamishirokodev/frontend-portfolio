@@ -2,21 +2,15 @@ import Link from "next/link";
 import { FaDiscord, FaFacebook, FaGithub } from "react-icons/fa6";
 import { MdAlternateEmail } from "react-icons/md";
 
-export default function SocialPlatform({
-	presence,
-	userStats,
-}: {
-	presence: Presence | null;
-	userStats: GithubStats | null;
-}) {
+export default function SocialPlatform() {
 	return (
 		<ul className="widget col-span-3 flex flex-col gap-3">
 			{[
 				{
 					method: "Github",
-					url: userStats?.userPage || process.env.NEXT_PUBLIC_GITHUB_URL,
+					url: process.env.NEXT_PUBLIC_GITHUB_URL,
 					icon: FaGithub,
-					displayName: userStats?.userDisplayName || "Sunaookami Shiroko",
+					displayName: "Sunaookami Shiroko",
 				},
 				{
 					method: "Facebook",
@@ -28,7 +22,7 @@ export default function SocialPlatform({
 					method: "Discord",
 					url: process.env.NEXT_PUBLIC_DISCORD_URL,
 					icon: FaDiscord,
-					displayName: presence?.user.displayName ?? "Sunaookami Shiroko",
+					displayName: "Sunaookami Shiroko",
 				},
 				{
 					method: "E-mail (work)",

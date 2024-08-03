@@ -1,18 +1,15 @@
-"use client";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import ColorLanguage from "@/functions/ColorLanguage";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { FaCodeFork, FaEye } from "react-icons/fa6";
-import { toast } from "react-toastify";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
-export default function Repositories({ userStats }: { userStats: GithubStats | null }) {
+export default async function Repositories() {
 	return (
-		<ul className="widget col-span-full flex flex-col gap-5 p-0 xl:col-span-2">
+		<div className="widget col-span-fdivl flex flex-col gap-5 p-0 xl:col-span-2">
 			{[
 				{
 					name: "owo-selfbot",
@@ -27,37 +24,27 @@ export default function Repositories({ userStats }: { userStats: GithubStats | n
 					image: `/repositories/frontend-portfolio.screenshot.png`,
 				},
 			].map(({ name, image }, index) => {
-				return <Repository key={index} owner={userStats?.username} repoName={name} image={image} />;
+				return (
+					<Repository
+						key={index}
+						owner="${process.env.NEXT_PUBLIC_GITHUB_USERNAME}"
+						repoName={name}
+						image={image}
+					/>
+				);
 			})}
-		</ul>
+		</div>
 	);
 }
 
-export function Repository({
-	owner = "sunaookamishirokodev",
-	repoName,
-	image,
-}: {
-	owner?: string;
-	repoName: string;
-	image: string;
-}) {
-	const [data, setData] = useState<null | GithubRepository>(null);
+export async function Repository({ repoName, image }: { owner?: string; repoName: string; image: string }) {
+	const res: { data: { data: GithubRepository } } = await axios.get(
+		`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/repository/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/${repoName}`,
+	);
 
-	useEffect(() => {
-		axios
-			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/repository/${owner}/${repoName}`)
-			.then((res) => setData(res.data.data))
-			.catch((error) =>
-				toast.error(error.response.data.msg, {
-					toastId: "error",
-				}),
-			);
-	}, [owner, repoName]);
-
-	if (!data) {
+	if (!res.data) {
 		return (
-			<li
+			<div
 				role="status"
 				className="flex animate-pulse flex-col gap-2 space-y-2.5 rounded-xl bg-white p-2 dark:bg-black"
 			>
@@ -100,21 +87,22 @@ export function Repository({
 					<div className="ms-2 h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700"></div>
 				</div>
 				<span className="sr-only">Loading...</span>
-			</li>
+			</div>
 		);
 	} else {
 		return (
 			<CardContainer className="col-span-3">
 				<CardBody className="group/card relative h-full w-full rounded-xl bg-gray-50 p-6 dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1]">
 					<CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-white">
-						{data.full_name}
+						{res.data.data.full_name}
 					</CardItem>
 					<CardItem as="p" translateZ="60" className="mt-2 text-sm text-neutral-500 dark:text-neutral-300">
-						{data.description || "No description was found"}
+						{res.data.data.description || "No description was found"}
 					</CardItem>
 					<CardItem translateZ="100" className="mt-4 w-full">
 						<ScrollArea className="h-72 rounded-xl">
 							<Image
+								priority
 								src={image}
 								width={0}
 								height={0}
@@ -128,8 +116,8 @@ export function Repository({
 						<CardItem
 							translateZ={20}
 							as={Link}
-							href={data.html_url}
-							target="__blank"
+							href={res.data.data.html_url}
+							target="_blank"
 							className="rounded-xl px-4 py-2 text-sm font-normal dark:text-white"
 							rel="noopener noreferrer"
 						>
@@ -143,15 +131,15 @@ export function Repository({
 							<div className="flex items-center gap-2">
 								<div
 									className="size-4 rounded-full"
-									style={{ backgroundColor: ColorLanguage(data.language) }}
+									style={{ backgroundColor: ColorLanguage(res.data.data.language) }}
 								/>
-								<span>{data.language}</span>
+								<span>{res.data.data.language}</span>
 							</div>
 							<ul className="flex gap-4">
 								{[
-									{ icon: FaStar, amount: data.stargazers_count },
-									{ icon: FaCodeFork, amount: data.forks_count },
-									{ icon: FaEye, amount: data.watchers_count },
+									{ icon: FaStar, amount: res.data.data.stargazers_count },
+									{ icon: FaCodeFork, amount: res.data.data.forks_count },
+									{ icon: FaEye, amount: res.data.data.watchers_count },
 								].map(({ icon, amount }, index) => {
 									const Icon = icon;
 

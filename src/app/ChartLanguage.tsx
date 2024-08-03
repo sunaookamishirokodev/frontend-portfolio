@@ -2,8 +2,11 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+import { ToastAction } from "@/components/ui/toast";
 
 const chartConfig = {
 	views: {
@@ -17,27 +20,28 @@ const chartConfig = {
 	},
 } satisfies ChartConfig;
 
-export default function ChartLanguage({ data }: { data: GithubStats | null }) {
+export default function ChartLanguage() {
 	const [activeChart, setActiveChart] = useState<keyof typeof chartConfig>("score");
-	const [results, setResults] = useState<{ language: string; score: number; repositories: number }[]>([]);
+	const [data, setData] = useState<GithubLanguages[]>([]);
+	const { toast } = useToast();
 
 	useEffect(() => {
-		if (data) {
-			const result: { language: string; score: number; repositories: number }[] = [];
-
-			Object.keys(data.languageStatistics).forEach((key) => {
-				result.push({
-					language: key,
-					score: data.languageStatistics[key],
-					repositories: data.languageRepositories[key],
-				});
-			});
-
-			result.sort((a, b) => a.score - b.score);
-
-			setResults(result);
-		}
-	}, [data]);
+		axios
+			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/languages/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`)
+			.then((res) => setData(res.data.data))
+			.catch((error) =>
+				toast({
+					title: "Something went wrong",
+					description: error.response?.data?.msg,
+					action: (
+						<ToastAction onClick={() => location.reload()} altText="Reload">
+							Reload
+						</ToastAction>
+					),
+					variant: "destructive",
+				}),
+			);
+	}, [toast]);
 
 	if (!data) {
 		return (
@@ -78,7 +82,7 @@ export default function ChartLanguage({ data }: { data: GithubStats | null }) {
 								>
 									<span className="text-muted-foreground text-xs">{chartConfig[chart].label}</span>
 									<span className="text-lg font-bold leading-none sm:text-3xl">
-										{results
+										{data
 											.reduce((acc, curr) => acc + curr[key as "score" | "repositories"], 0)
 											.toLocaleString()}
 									</span>
@@ -91,7 +95,7 @@ export default function ChartLanguage({ data }: { data: GithubStats | null }) {
 					<ChartContainer config={chartConfig} className="aspect-auto h-[250px] w-full xl:h-[100px]">
 						<BarChart
 							accessibilityLayer={false}
-							data={results}
+							data={data}
 							margin={{
 								left: 12,
 								right: 12,

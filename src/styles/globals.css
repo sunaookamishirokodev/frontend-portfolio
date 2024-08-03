@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.layout {
+		@apply mx-auto w-full sm:w-[540px] md:w-[720px] lg:w-[960px] xl:w-[1140px] 2xl:w-[1320px];
+	}
+
+	.widget {
+		@apply rounded-xl bg-colors-secondary-200 p-4 dark:bg-colors-primary-200;
+	}
+}

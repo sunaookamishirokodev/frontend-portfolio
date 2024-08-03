@@ -21,12 +21,15 @@ export default function MenuContainer() {
 				aria-label="menu"
 				className={`fixed bottom-0 right-0 top-0 z-[10000] bg-colors-secondary-200 p-6 transition-transform will-change-transform dark:divide-black dark:bg-colors-primary-200 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
 			>
-				<ul id="tools" className="flex items-center justify-between gap-2 border-b pb-5 dark:border-b-white/20">
+				<div
+					id="tools"
+					className="flex items-center justify-between gap-2 border-b pb-5 dark:border-b-white/20"
+				>
 					<div className="flex">
 						<ToggleThemeButton />
 					</div>
 					<MdOutlineArrowCircleRight onClick={() => setIsOpen(false)} className="size-10 cursor-pointer" />
-				</ul>
+				</div>
 				<div className="my-0.5 flex gap-2 text-sm">
 					{/* account */}
 					<div className="text-white-60">Not logged in yet,</div>

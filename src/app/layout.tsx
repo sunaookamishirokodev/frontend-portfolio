@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import "react-toastify/dist/ReactToastify.css";
+import "@/styles/globals.css";
+import "@/styles/animations.css";
+import "@/styles/themes.css";
 
 const { NEXT_PUBLIC_FACEBOOK_URL, NEXT_PUBLIC_BASE_URL } = process.env;
 

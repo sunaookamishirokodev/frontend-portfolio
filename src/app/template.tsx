@@ -1,13 +1,13 @@
 "use client";
+import MenuContainer from "@/components/MenuContainer";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Toaster } from "@/components/ui/toaster";
 import { useTheme } from "next-themes";
 import { JetBrains_Mono } from "next/font/google";
-import { ToastContainer } from "react-toastify";
-import Header from "./Header";
-import MenuContainer from "@/components/MenuContainer";
+import Image from "next/image";
 import { createContext, Dispatch, SetStateAction, useState } from "react";
 import ScrollToTop from "react-scroll-to-top";
-import Image from "next/image";
+import Header from "./Header";
 export const MenuState = createContext<{ isOpen: boolean; setIsOpen: Dispatch<SetStateAction<boolean>> }>({
 	isOpen: false,
 	setIsOpen: () => false,
@@ -30,18 +30,7 @@ export default function RootTemplate({
 					<div className="flex pt-24">
 						<div className="layout">{children}</div>
 					</div>
-					<ToastContainer
-						position="top-right"
-						autoClose={5000}
-						hideProgressBar={false}
-						newestOnTop={false}
-						closeOnClick
-						rtl={false}
-						pauseOnFocusLoss
-						draggable
-						pauseOnHover
-						theme={theme === "black" ? "light" : "dark"}
-					/>
+					<Toaster />
 					<MenuContainer />
 				</MenuState.Provider>
 			</ThemeProvider>

@@ -2,13 +2,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { GlobeConfig } from "@/components/ui/globe";
 
 const World = dynamic(() => import("@/components/ui/globe").then((m) => m.World), {
 	ssr: false,
 });
 
 export default function Globe() {
-	const globeConfig = {
+	const globeConfig: GlobeConfig = {
 		pointSize: 4,
 		globeColor: "#062056",
 		showAtmosphere: true,
@@ -419,7 +420,7 @@ export default function Globe() {
 					</p>
 				</motion.div>
 				<div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-40 w-full select-none bg-gradient-to-b from-transparent to-white dark:to-black" />
-				<div className="absolute -bottom-20 z-10 h-72 w-full md:h-full">
+				<div className="absolute -bottom-20 z-10 h-auto w-full md:h-full">
 					<World data={sampleArcs} globeConfig={globeConfig} />
 				</div>
 			</div>
