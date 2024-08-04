@@ -76,7 +76,7 @@ export const CardContainer = ({
 
 export const CardBody = ({ children, className }: { children: ReactNode; className?: string }) => {
 	return (
-		<div className={cn("h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]", className)}>
+		<div className={cn("[transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]", className)}>
 			{children}
 		</div>
 	);
@@ -118,7 +118,7 @@ export const CardItem = ({
 	}, [isMouseEntered, rotateX, rotateY, rotateZ, translateX, translateY, translateZ]);
 
 	return (
-		<Tag ref={ref} className={cn("w-fit transition duration-200 ease-linear", className)} {...rest}>
+		<Tag ref={ref} className={cn("transition duration-200 ease-linear", className)} {...rest}>
 			{children}
 		</Tag>
 	);

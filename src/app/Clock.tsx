@@ -41,7 +41,7 @@ export default function Clock() {
 	return (
 		<section
 			title="Cre: AutumnVNChino"
-			className="widget col-span-full grid flex-1 select-none grid-cols-3 items-center gap-5 xl:col-span-2"
+			className="widget col-span-full grid flex-1 select-none grid-cols-3 items-center gap-5 lg:col-span-2"
 		>
 			<div className="relative">
 				<svg viewBox="0 0 500 500" className="fill-[#AADDFF]">
@@ -70,10 +70,10 @@ export default function Clock() {
 				</div>
 			</div>
 			<ul className="col-span-2 flex flex-col justify-center gap-2">
-				<li className="sm:text-2xl md:text-3xl lg:text-4xl xl:text-2xl">
+				<li className="sm:text-2xl md:text-3xl lg:text-2xl">
 					{date ? day[date?.getDay()] : "Today"}, {date ? lightFormat(date, "dd/MM/yyyy") : "00/00/0000"}
 				</li>
-				<li className="flex text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-5xl 2xl:text-6xl">
+				<li className="flex text-4xl sm:text-6xl md:text-7xl lg:text-5xl xl:text-6xl">
 					{date ? (
 						<>
 							<span>
@@ -97,7 +97,7 @@ export default function Clock() {
 						<>00:00:00</>
 					)}
 				</li>
-				<li className="text-xs md:text-sm">
+				<li className="lg:text-md text-xs md:text-sm">
 					{timeZoneName ? (
 						<>
 							{timeZoneName === "Indochina Time" ? "Same time" : timeZoneName?.split(" Time")[0]} /{" "}

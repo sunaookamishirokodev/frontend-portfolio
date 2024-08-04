@@ -47,7 +47,7 @@ export default function ChartLanguage() {
 		return (
 			<div
 				role="status"
-				className="col-span-3 flex h-full w-full animate-pulse items-center justify-center rounded-lg bg-gray-300 dark:bg-gray-700"
+				className="col-span-full flex h-full w-full animate-pulse items-center justify-center rounded-lg bg-gray-300 2xl:col-span-3 dark:bg-gray-700"
 			>
 				<svg
 					className="h-10 w-10 text-gray-200 dark:text-gray-600"
@@ -64,10 +64,10 @@ export default function ChartLanguage() {
 		);
 	} else {
 		return (
-			<Card className="widget col-span-3">
+			<Card className="widget col-span-full lg:col-span-2 2xl:col-span-3">
 				<CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
 					<div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-						<CardTitle>Languages used chart</CardTitle>
+						<CardTitle className="sm:text-base lg:text-xl">Languages used chart</CardTitle>
 						<CardDescription>Showing total language score and repositories used it</CardDescription>
 					</div>
 					<div className="flex">
@@ -81,7 +81,7 @@ export default function ChartLanguage() {
 									onClick={() => setActiveChart(chart)}
 								>
 									<span className="text-muted-foreground text-xs">{chartConfig[chart].label}</span>
-									<span className="text-lg font-bold leading-none sm:text-3xl">
+									<span className="text-lg font-bold leading-none 2xl:text-xl">
 										{data
 											.reduce((acc, curr) => acc + curr[key as "score" | "repositories"], 0)
 											.toLocaleString()}
@@ -92,7 +92,7 @@ export default function ChartLanguage() {
 					</div>
 				</CardHeader>
 				<CardContent className="px-2 sm:p-6">
-					<ChartContainer config={chartConfig} className="aspect-auto h-[250px] w-full xl:h-[100px]">
+					<ChartContainer config={chartConfig} className="aspect-auto h-[250px] w-full lg:h-[100px]">
 						<BarChart
 							accessibilityLayer={false}
 							data={data}

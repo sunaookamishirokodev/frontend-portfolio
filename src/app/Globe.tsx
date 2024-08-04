@@ -396,8 +396,8 @@ export default function Globe() {
 	];
 
 	return (
-		<div className="relative col-span-full flex h-80 w-full flex-row justify-center p-4 md:h-screen xl:col-span-3">
-			<div className="relative h-full w-full max-w-7xl overflow-hidden px-4">
+		<div className="relative col-span-full flex h-screen w-full flex-row justify-center bg-white md:h-auto xl:col-span-3 2xl:col-span-3 dark:bg-black">
+			<div className="relative mx-auto h-full w-full max-w-7xl overflow-hidden px-4 md:h-[40rem]">
 				<motion.div
 					initial={{
 						opacity: 0,
@@ -413,14 +413,14 @@ export default function Globe() {
 					className="div"
 				>
 					<h2 className="text-center text-xl font-bold text-black md:text-4xl dark:text-white">
-						This is where you and me live
+						This is our common home
 					</h2>
 					<p className="mx-auto mt-2 max-w-md text-center text-base font-normal text-neutral-700 md:text-lg dark:text-neutral-200">
-						And I hope we all are friends
+						And I wish everyone could be friends with each other :3
 					</p>
 				</motion.div>
 				<div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-40 w-full select-none bg-gradient-to-b from-transparent to-white dark:to-black" />
-				<div className="absolute -bottom-20 z-10 h-auto w-full md:h-full">
+				<div className="absolute -bottom-20 z-10 h-72 w-full md:h-full">
 					<World data={sampleArcs} globeConfig={globeConfig} />
 				</div>
 			</div>

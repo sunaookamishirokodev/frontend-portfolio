@@ -42,9 +42,9 @@ const jsonLd: WithContext<Person> = {
 export default function RootPage() {
 	return (
 		<>
-			<main className="flex flex-col gap-32 xl:gap-10">
+			<main className="flex flex-col gap-32 lg:gap-10">
 				<Introduction />
-				<div className="flex flex-col gap-2 md:grid md:grid-cols-3 md:gap-6 md:p-4 xl:grid-cols-5 xl:gap-12">
+				<div className="flex flex-col gap-2 md:grid md:grid-cols-3 md:gap-6 md:p-4 lg:grid-cols-4 lg:gap-8 2xl:grid-cols-5 2xl:gap-12">
 					<SocialPlatform />
 					<GithubStats />
 					<Clock />

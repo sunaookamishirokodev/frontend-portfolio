@@ -1,21 +1,21 @@
-import axios from "axios";
 import Image from "next/image";
 import { AiOutlineIssuesClose } from "react-icons/ai";
 import { FaStar } from "react-icons/fa";
 import { FaCodeCommit, FaCodeFork, FaCodePullRequest } from "react-icons/fa6";
 import { RiGitRepositoryCommitsLine, RiGitRepositoryLine } from "react-icons/ri";
+import { instance } from "./actions";
 
 export default async function GithubStats() {
-	const stats: { data: { data: GithubStats } } = await axios.get(
-		`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/stats/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+	const stats: { data: { data: GithubStats } } = await instance.get(
+		`/github/stats/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
 	);
 
-	const user: { data: { data: GithubUser } } = await axios.get(
-		`${process.env.NEXT_PUBLIC_API_BASE_URL}/github/user/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+	const user: { data: { data: GithubUser } } = await instance.get(
+		`/github/user/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
 	);
 
 	return (
-		<div className="widget col-span-full grid grid-cols-3 items-center justify-between gap-5 text-lg md:text-base xl:col-span-2">
+		<div className="widget col-span-full grid grid-cols-3 items-center justify-between gap-5 text-lg md:text-lg lg:col-span-2 xl:text-base">
 			<ul className="col-span-2">
 				{[
 					{

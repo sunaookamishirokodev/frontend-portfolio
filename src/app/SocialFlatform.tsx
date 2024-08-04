@@ -4,7 +4,7 @@ import { MdAlternateEmail } from "react-icons/md";
 
 export default function SocialPlatform() {
 	return (
-		<ul className="widget col-span-3 flex flex-col gap-3">
+		<ul className="widget col-span-full flex flex-col gap-3 lg:col-span-2 2xl:col-span-3">
 			{[
 				{
 					method: "Github",

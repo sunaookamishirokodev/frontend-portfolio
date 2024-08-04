@@ -36,7 +36,7 @@ export default function Introduction() {
 		};
 	}, []);
 	return (
-		<section className="flex flex-col gap-10 p-4 xl:flex-row">
+		<section className="flex flex-col gap-10 p-4 lg:flex-row">
 			<Image
 				unoptimized
 				src={presence?.user.avatar ? presence.user.avatar + "?size=4096" : "/shiroko_avatar.jpg"}
@@ -44,13 +44,13 @@ export default function Introduction() {
 				width={0}
 				height={0}
 				draggable={false}
-				className={`relative z-40 size-full rounded-full ring-8 xl:size-64 ${colors[presence?.user.status?.type || "offline"]}`}
+				className={`relative z-40 size-full rounded-full ring-8 lg:size-64 ${colors[presence?.user.status?.type || "offline"]}`}
 				sizes="100vw"
 				priority
 			/>
 
 			<div className="flex-1 select-none">
-				<div className="relative flex justify-center text-xl md:text-4xl xl:justify-normal xl:text-5xl">
+				<div className="relative flex justify-center text-xl md:text-4xl lg:justify-normal">
 					<div className="absolute bottom-full z-[1] h-full w-full bg-white dark:bg-black"></div>
 					<span className="text-violet-500">Console</span>.<span className="text-green-500">log</span>
 					<span className="text-orange-500">(</span>
@@ -62,8 +62,8 @@ export default function Introduction() {
 					</span>
 					<span className="text-yellow-500">&quot;</span>
 					<span className="text-orange-500">)</span>
-					<div className="absolute left-0 top-1/3 w-full bg-white text-sm md:text-2xl xl:text-4xl dark:bg-black">
-						<div className="py-2 text-center xl:text-start">
+					<div className="absolute left-0 top-1/3 w-full bg-white text-sm md:text-2xl dark:bg-black">
+						<div className="py-2 text-center lg:text-start">
 							<span>I&apos;m</span> <span className="text-blue-500">Shiroko</span> - a{" "}
 							<TypeIt
 								className="text-highlight"

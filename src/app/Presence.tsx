@@ -11,7 +11,7 @@ export default function Presence({ presence }: { presence: Presence | null }) {
 		<div className="-mx-4 flex gap-5 rounded-md bg-colors-secondary-200 p-4 md:mx-0 dark:bg-colors-primary-200">
 			{presence ? (
 				<>
-					<div className="relative w-1/3 md:w-[calc(100%/6.65)]">
+					<div className="relative w-1/3 md:w-[calc(100%/5.65)] xl:w-[calc(100%/6.65)]">
 						<Image
 							unoptimized
 							src={
@@ -26,27 +26,27 @@ export default function Presence({ presence }: { presence: Presence | null }) {
 							sizes="100vw"
 							className="w-full rounded"
 						/>
-						{presence.activity?.assets?.smallImage ? (
-							<Image
-								unoptimized
-								src={presence.activity.assets.smallImage + "?size=4096"}
-								alt={presence.activity?.assets?.smallText ?? "Shiroko Small Image"}
-								title={presence.activity?.assets?.largeText ?? "Shiroko Small Image"}
-								width={40}
-								height={40}
-								sizes="100vw"
-								className="absolute -bottom-[10px] -right-[10px] aspect-square rounded-full"
-							/>
-						) : (
-							<></>
-						)}
+						<Image
+							unoptimized
+							src={
+								presence.activity?.assets?.smallImage
+									? `${presence.activity.assets.smallImage}?size=4096`
+									: "/shiroko_small_image_fallback.jpg"
+							}
+							alt={presence.activity?.assets?.smallText ?? "Shiroko Small Image"}
+							title={presence.activity?.assets?.largeText ?? "Shiroko Small Image"}
+							width={40}
+							height={40}
+							sizes="100vw"
+							className="absolute -bottom-[10px] -right-[10px] aspect-square rounded-full"
+						/>
 					</div>
 					<div className="flex flex-col gap-1">
-						<span className="text-lg md:text-3xl">
+						<span className="text-lg lg:text-2xl xl:text-3xl">
 							{presence.activity?.name ?? "There are no activities going on"}
 						</span>
-						<span className="text-xs md:text-xl">{presence.activity?.state}</span>
-						<span className="text-xs md:text-xl">
+						<span className="text-xs lg:text-lg xl:text-xl">{presence.activity?.state}</span>
+						<span className="text-xs lg:text-lg xl:text-xl">
 							{presence.activity?.details ?? "If you need help, please contact me now!"}
 						</span>
 						<span className="text-base md:text-lg">
