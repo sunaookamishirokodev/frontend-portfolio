@@ -4,8 +4,8 @@ interface User {
 	username: string;
 	mail: string;
 	mail_hidden: boolean;
-	createAt: Date;
-	updateAt: Date;
+	create_at: Date;
+	update_at: Date;
 	hashed_password: string;
 	banner?: string;
 	avatar?: string;

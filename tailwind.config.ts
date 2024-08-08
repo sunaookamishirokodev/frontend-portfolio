@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
+const flattenColorPalette = require("tailwindcss/lib/util/flattenColorPalette");
 
 export const colors = {
 	"primary-100": "#121113",

@@ -37,10 +37,7 @@ export default function RootTemplate({
 	useEffect(() => {
 		axios
 			.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users/@me`, { withCredentials: true })
-			.then((res) => {
-				console.log(res.data.data);
-				setUser(res.data.data);
-			})
+			.then((res) => setUser(res.data.data))
 			.catch((error) => {
 				if (error.response.status !== 401) {
 					toast({

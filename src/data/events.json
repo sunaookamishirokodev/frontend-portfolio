@@ -1,0 +1,34 @@
+[
+	{
+		"title": "Dating Chloe was my beginning",
+		"description": [
+			"Chloe, you are the best gift life has ever given me. You are not only beautiful but also have a warm heart and a pure soul. I always feel so lucky to have you by my side. Every day with you is a wonderful day. I love you so much!"
+		],
+		"badge": "28/1/2023 - present",
+		"image": "/events/chloe.jpg"
+	},
+	{
+		"title": "Write the first line of code",
+		"description": [
+			"Since I was a child, I have been fascinated by the world of computers. Mysterious lines of code are like fascinating puzzles, urging me to explore and conquer. That passion led me to the path of becoming a developer. I remember the first time I wrote lines of code, I felt like I was creating my own world. And then, the nickname \"Sunaookami Shiroko\" was born, associated with my dreams and ambitions in the field of programming."
+		],
+		"badge": "24/7/2023 - present",
+		"image": "/events/shiroko.jpg"
+	},
+	{
+		"title": "Become a front-end developer",
+		"description": [
+			"After many days and nights of hard work with lines of code, I have finally officially become a frontend developer. The learning and practicing process is not easy, but every difficulty is a valuable lesson. The joy of creating beautiful, user-friendly interfaces is the biggest motivation for me to continue pursuing my passion."
+		],
+		"badge": "10/2023 - present",
+		"image": "/events/frontend.png"
+	},
+	{
+		"title": "Become a backend-end and fullstack developer",
+		"description": [
+			"Misono Mika has always been the ideal model of a fullstack developer in my eyes. She inspired me to start exploring the backend world. I am gradually getting acquainted with Node.js and frameworks like Express. Every day, I spend time learning and practicing, hoping that one day I can create complete and impressive web applications like her."
+		],
+		"badge": "2/2024 - present",
+		"image": "/events/backend.png"
+	}
+]

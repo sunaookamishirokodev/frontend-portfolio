@@ -3,11 +3,14 @@ import { MenuState, UserData } from "@/app/template";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useContext } from "react";
+
 import { FaHome } from "react-icons/fa";
 import { GiSkills } from "react-icons/gi";
 import { GrResources } from "react-icons/gr";
-import { MdOutlineArrowCircleRight } from "react-icons/md";
+import { MdOutlineArrowCircleRight, MdEmojiEvents } from "react-icons/md";
 import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
+import { CgWebsite } from "react-icons/cg";
+
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { getDefaultAvatarName, getUserMedia } from "@/functions/User";
@@ -67,9 +70,11 @@ export default function MenuContainer() {
 				<ul className="flex flex-col gap-2 pt-5 text-xl">
 					{[
 						{ href: "/", label: "Home", icon: FaHome },
-						{ href: "/skills", label: "Skills", icon: GiSkills },
+						// { href: "/skills", label: "Skills", icon: GiSkills },
+						{ href: "/events", label: "Events", icon: MdEmojiEvents },
+						{ href: "/production", label: "Production", icon: CgWebsite },
 						{ href: "/resources", label: "Resources", icon: GrResources },
-						...(user ? [{ href: "/settings", label: "Settings", icon: IoSettingsOutline }] : []),
+						// ...(user ? [{ href: "/settings", label: "Settings", icon: IoSettingsOutline }] : []),
 					].map(({ href, label, icon }, index) => {
 						const Icon = icon;
 
@@ -78,7 +83,7 @@ export default function MenuContainer() {
 								<Link
 									href={href}
 									tabIndex={-1}
-									className="flex origin-left items-center gap-3 md:transition-transform md:hover:scale-110"
+									className={`flex items-center gap-3 ${pathname === href ? "origin-left md:transition-transform md:hover:scale-110" : ""}`}
 								>
 									<Icon />
 									<span>{label}</span>

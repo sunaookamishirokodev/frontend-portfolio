@@ -2,11 +2,13 @@ import { Person, WithContext } from "schema-dts";
 import ChartLanguage from "./ChartLanguage";
 import Clock from "./Clock";
 import GithubStats from "./GithubStats";
-import Globe from "./Globe";
 import { InfiniteMovingCard } from "./InfiniteMovingCard";
 import Introduction from "./Introduction";
-import Repositories from "./Repositories";
+import Repository from "./Repository";
 import SocialPlatform from "./SocialFlatform";
+import { lazy } from "react";
+
+const Globe = lazy(() => import("./Globe"));
 
 const jsonLd: WithContext<Person> = {
 	"@context": "https://schema.org",
@@ -18,7 +20,7 @@ const jsonLd: WithContext<Person> = {
 	email: "shiroko@elainateam.io",
 	gender: "male",
 	jobTitle: ["Developer", "Fullstack Developer"],
-	sponsor: ["https://buymeacoffee.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}"],
+	sponsor: [`https://buymeacoffee.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`],
 	affiliation: ["Elaina Team"],
 	alumniOf: ["Phuoc Long 1 Primary School", "Vo Thi Sau Secondary School"],
 	award: [
@@ -51,7 +53,7 @@ export default function RootPage() {
 					<ChartLanguage />
 					<InfiniteMovingCard />
 					<Globe />
-					<Repositories />
+					<Repository />
 				</div>
 			</main>
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

@@ -42,7 +42,7 @@ export default function Presence({ presence }: { presence: Presence | null }) {
 						/>
 					</div>
 					<div className="flex flex-col gap-1">
-						<span className="text-lg lg:text-2xl xl:text-3xl">
+						<span className="text-xs lg:text-2xl xl:text-3xl">
 							{presence.activity?.name ?? "There are no activities going on"}
 						</span>
 						<span className="text-xs lg:text-lg xl:text-xl">{presence.activity?.state}</span>
@@ -75,7 +75,7 @@ export default function Presence({ presence }: { presence: Presence | null }) {
 										const Icon = icon;
 
 										return (
-											<li className="text-3xl" key={index} title={title}>
+											<li className="text-lg lg:text-3xl" key={index} title={title}>
 												<Link
 													href={href}
 													tabIndex={-1}

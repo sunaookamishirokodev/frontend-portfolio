@@ -1,0 +1,37 @@
+[
+	{
+		"title": "My current frontend portfolio",
+		"link": "https://github.com/sunaookamishirokodev/frontend-portfolio",
+		"thumbnail": "/repositories/frontend-portfolio.screenshot.png"
+	},
+	{
+		"title": "My current single sign-on portfolio",
+		"link": "https://github.com/sunaookamishirokodev/sso-portfolio",
+		"thumbnail": "/repositories/sso-portfolio.screenshot.jpeg"
+	},
+	{
+		"title": "My legacy portfolio",
+		"link": "https://github.com/sunaookamishirokodev/legacy-portfolio",
+		"thumbnail": "/repositories/legacy-portfolio.screenshot.jpeg"
+	},
+	{
+		"title": "Discord bot template for discord.js",
+		"link": "https://github.com/sunaookamishirokodev/discordbot-template-v14",
+		"thumbnail": "/repositories/discordbot-template-v14.screenshot.jpg"
+	},
+	{
+		"title": "My old portfolio",
+		"link": "https://github.com/sunaookamishirokodev/old-portfolio",
+		"thumbnail": "/repositories/old-portfolio.screenshot.jpeg"
+	},
+	{
+		"title": "Next.js template",
+		"link": "https://github.com/sunaookamishirokodev/nextjs-app-template",
+		"thumbnail": "/repositories/nextjs-template.screenshot.jpeg"
+	},
+	{
+		"title": "Owo selfbot v2",
+		"link": "https://github.com/sunaookamishirokodev/owo-selfbot",
+		"thumbnail": "/repositories/owo-selfbot.screenshot.jpg"
+	}
+]

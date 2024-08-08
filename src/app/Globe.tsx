@@ -396,20 +396,12 @@ export default function Globe() {
 	];
 
 	return (
-		<div className="relative col-span-full flex h-screen w-full flex-row justify-center bg-white md:h-auto xl:col-span-3 2xl:col-span-3 dark:bg-black">
+		<div className="relative col-span-full flex h-screen w-full flex-row justify-center bg-white md:h-auto xl:col-span-2 2xl:col-span-3 dark:bg-black">
 			<div className="relative mx-auto h-full w-full max-w-7xl overflow-hidden px-4 md:h-[40rem]">
 				<motion.div
-					initial={{
-						opacity: 0,
-						y: 20,
-					}}
-					animate={{
-						opacity: 1,
-						y: 0,
-					}}
-					transition={{
-						duration: 1,
-					}}
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 1 }}
 					className="div"
 				>
 					<h2 className="text-center text-xl font-bold text-black md:text-4xl dark:text-white">
