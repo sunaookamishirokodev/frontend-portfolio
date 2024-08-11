@@ -9,5 +9,6 @@ declare namespace NodeJS {
 		readonly NEXT_PUBLIC_EMAIL_ADDRESS: string;
 		readonly NEXT_PUBLIC_GITHUB_USERNAME: string;
 		readonly NEXT_PUBLIC_GITHUB_SOURCE: string;
+		readonly NEXT_PUBLIC_DISCORD_USER_ID: string;
 	}
 }

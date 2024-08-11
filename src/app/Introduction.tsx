@@ -16,15 +16,17 @@ export default function Introduction() {
 	const [presence, setPresence] = useState<null | Presence>(null);
 
 	useEffect(() => {
-		const socket = io("wss://gateway.shirokodev.site/", {
+		const socket = io("wss://gateway.shirokodev.site/presence", {
 			withCredentials: true,
 		});
 
-		socket.emit("getPresence");
+		socket.emit("getPresence", process.env.NEXT_PUBLIC_DISCORD_USER_ID);
 
-		socket.on("updatePresence", (data) => {
-			data = JSON.parse(data);
-			setPresence(data);
+		socket.on("updatePresence", (res) => {
+			res = JSON.parse(res);
+			if (res.userId === process.env.NEXT_PUBLIC_DISCORD_USER_ID) {
+				setPresence(res.data);
+			}
 		});
 
 		socket.on("error", (data) => {
